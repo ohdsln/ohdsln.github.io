@@ -78,15 +78,15 @@
     /* Dropdown */
 
     .dropdown {
-  display: none;
-  position: absolute;
-  top: 100%;
-  left: 0;
-  min-width: 210px;
-  padding: 20px 0 0 12px;
-  background: #fff;
-  z-index: 10;
-}
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 210px;
+      padding: 20px 0 0 12px;
+      background: #fff;
+      z-index: 10;
+    }
 
     .nav-item:hover .dropdown,
     .nav-item:focus-within .dropdown,
@@ -260,6 +260,7 @@
   <script>
     const menuItems = document.querySelectorAll('.nav-item');
 
+    // Click to open or close dropdown
     menuItems.forEach(item => {
       const button = item.querySelector('.nav-trigger');
 
@@ -279,6 +280,22 @@
       });
     });
 
+    // Close the previously clicked dropdown
+    // when hovering over another menu
+    menuItems.forEach(item => {
+      item.addEventListener('mouseenter', () => {
+        menuItems.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.classList.remove('is-open');
+
+            otherItem.querySelector('.nav-trigger')
+              .setAttribute('aria-expanded', 'false');
+          }
+        });
+      });
+    });
+
+    // Close all dropdowns when clicking outside
     document.addEventListener('click', event => {
       if (!event.target.closest('.nav-item')) {
         menuItems.forEach(item => {
