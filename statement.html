@@ -128,16 +128,11 @@
       width: 100%;
       max-width: 1100px;
       margin: 0 auto;
-      display: grid;
-      grid-template-columns: 260px minmax(0, 650px);
-      column-gap: 55px;
-      align-items: start;
     }
 
-    /* LEFT TITLE AREA */
+    /* PAGE TITLE */
     .statement-heading {
-      position: sticky;
-      top: 40px;
+      margin-bottom: 38px;
     }
 
     .statement-title {
@@ -149,10 +144,17 @@
       letter-spacing: -0.4px;
     }
 
-    /* RIGHT TEXT AREA */
+    /* TWO-COLUMN CONTENT */
+    .statement-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 55px;
+      align-items: start;
+    }
+
     .statement-content {
       width: 100%;
-      max-width: 650px;
+      min-width: 0;
     }
 
     .statement-content p {
@@ -208,27 +210,33 @@
         padding: 55px 6% 75px;
       }
 
-      .statement-layout {
-        grid-template-columns: 1fr;
-        row-gap: 32px;
-      }
-
       .statement-heading {
-        position: static;
+        margin-bottom: 32px;
       }
 
       .statement-title {
         font-size: 17px;
       }
 
-      .statement-content {
-        max-width: 100%;
+      .statement-columns {
+        display: flex;
+        flex-direction: column;
       }
 
       .statement-content p {
         font-size: 14px;
         line-height: 2;
         margin-bottom: 25px;
+      }
+
+      /* Hide the empty English column until content is added */
+      .statement-english:empty {
+        display: none;
+      }
+
+      /* Separate Korean and English on mobile */
+      .statement-english:not(:empty) {
+        margin-top: 32px;
       }
 
       footer {
@@ -254,8 +262,8 @@
         padding-top: 45px;
       }
 
-      .statement-layout {
-        row-gap: 27px;
+      .statement-heading {
+        margin-bottom: 27px;
       }
 
       .statement-content p {
@@ -352,29 +360,37 @@
   <main>
     <section class="statement-layout">
 
-      <!-- LEFT TITLE -->
+      <!-- PAGE TITLE -->
       <div class="statement-heading">
         <h1 class="statement-title">Artist's Statement</h1>
       </div>
 
-      <!-- RIGHT TEXT -->
-      <div class="statement-content">
+      <!-- TWO-COLUMN CONTENT -->
+      <div class="statement-columns">
 
-        <p>
-          “기억의 세계는 어떻게 구성되고 작동하는가” – 이 질문은 나를 캔버스 앞에 세운다.
-        </p>
+        <!-- KOREAN VERSION -->
+        <div class="statement-content statement-korean" lang="ko">
 
-        <p>
-          기억의 세계는 선명한 기억, 바랜 기억, 지워지다 만 기억, 짜깁기된 기억들이 뒤섞여 계속 변화하고 유동하는 공간일 것이다. 이 모습을 나는 ‘구조로서의 추상’, 혹은 ‘풍경으로서의 추상’으로 상정한다. 그 안에서 기억의 조각들은 형과 상이 되어 서로 관계 맺으며 구조를 이루고, 그 구조는 지속적으로 변형되고 축적되며 스스로를 갱신한다. 기억의 세계가 단일한 이미지나 확정된 질서로 환원될 수 없다면, 그것을 담아내는 회화 또한 하나의 완결된 상태로 고정될 수 없다.
-        </p>
+          <p>
+            “기억의 세계는 어떻게 구성되고 작동하는가” – 이 질문은 나를 캔버스 앞에 세운다.
+          </p>
 
-        <p>
-          작업은 공간과 건축의 이미지에서 출발하지만, 재현을 목적으로 삼지 않는다. 원본 이미지를 해체하여 추출한 건축의 기하학적 면들을 골격으로 세우고, 그 위에서 자르고, 변형하고, 덮고, 재배치하기를 반복한다. 이 과정은 구조를 짓고 다시 조정하는 건축 행위와 닮아 있지만, 동시에 그 구조를 안정시키기보다 흔들고 긴장시키는 방향으로 작동한다. 화면에 새겨지는 흔적들은 수많은 선택과 판단이 퇴적된 층위이며, 이전의 상태는 완전히 지워지지 않고 새로 쌓이는 것들과 충돌하고 스며들며 잔존한다. 면과 색은 이 구조를 이루는 단위로 작동하면서, 때로는 날카롭게 경계를 긋고 때로는 서로 침식하며 구조가 형성되어온 시간을 드러낸다.
-        </p>
+          <p>
+            기억의 세계는 선명한 기억, 바랜 기억, 지워지다 만 기억, 짜깁기된 기억들이 뒤섞여 계속 변화하고 유동하는 공간일 것이다. 이 모습을 나는 ‘구조로서의 추상’, 혹은 ‘풍경으로서의 추상’으로 상정한다. 그 안에서 기억의 조각들은 형과 상이 되어 서로 관계 맺으며 구조를 이루고, 그 구조는 지속적으로 변형되고 축적되며 스스로를 갱신한다. 기억의 세계가 단일한 이미지나 확정된 질서로 환원될 수 없다면, 그것을 담아내는 회화 또한 하나의 완결된 상태로 고정될 수 없다.
+          </p>
 
-        <p>
-          이 작업은 기억이 변형되고 추상화되어 가는 방식과 맞닿아있다. 기억은 고정된 원본으로 보존되지 않으며, 무언가를 기억한다는 것은 이미 퇴색된 상태를 반복해서 불러내고 다시 구성하는 과정에 가깝다. 나의 회화 역시 특정한 이미지를 향해 수렴하지 않고, 지속되는 편집과 수정 과정 속에 있는 하나의 잠정적인 상태, 끝나지 않음으로써 열려있는 풍경이다.
-        </p>
+          <p>
+            작업은 공간과 건축의 이미지에서 출발하지만, 재현을 목적으로 삼지 않는다. 원본 이미지를 해체하여 추출한 건축의 기하학적 면들을 골격으로 세우고, 그 위에서 자르고, 변형하고, 덮고, 재배치하기를 반복한다. 이 과정은 구조를 짓고 다시 조정하는 건축 행위와 닮아 있지만, 동시에 그 구조를 안정시키기보다 흔들고 긴장시키는 방향으로 작동한다. 화면에 새겨지는 흔적들은 수많은 선택과 판단이 퇴적된 층위이며, 이전의 상태는 완전히 지워지지 않고 새로 쌓이는 것들과 충돌하고 스며들며 잔존한다. 면과 색은 이 구조를 이루는 단위로 작동하면서, 때로는 날카롭게 경계를 긋고 때로는 서로 침식하며 구조가 형성되어온 시간을 드러낸다.
+          </p>
+
+          <p>
+            이 작업은 기억이 변형되고 추상화되어 가는 방식과 맞닿아있다. 기억은 고정된 원본으로 보존되지 않으며, 무언가를 기억한다는 것은 이미 퇴색된 상태를 반복해서 불러내고 다시 구성하는 과정에 가깝다. 나의 회화 역시 특정한 이미지를 향해 수렴하지 않고, 지속되는 편집과 수정 과정 속에 있는 하나의 잠정적인 상태, 끝나지 않음으로써 열려있는 풍경이다.
+          </p>
+
+        </div>
+
+        <!-- ENGLISH VERSION: Add translated paragraphs here -->
+        <div class="statement-content statement-english" lang="en"></div>
 
       </div>
     </section>
