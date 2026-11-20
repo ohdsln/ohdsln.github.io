@@ -130,10 +130,6 @@
       color: #03a890;
     }
 
-    .nav-item:focus-within .dropdown {
-      display: block;
-    }
-
 
     /* ------------------------------
        MAIN / ARTWORK
@@ -151,52 +147,56 @@
       align-items: flex-start;
     }
 
-    /*
-      Portrait artwork frame
-      - 3:4 ratio
-      - Responsive width
-      - No cropping or distortion
+    /* Landscape artwork
+       Responsive width
+       Original image ratio preserved
+       No cropping or distortion
     */
 
     .artwork-frame {
       position: relative;
-      width: min(100%, 460px);
-      aspect-ratio: 3 / 4;
+      width: min(100%, 900px);
       border: 1px solid #e8e8e8;
       background: #fafafa;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
       overflow: hidden;
       cursor: default;
     }
 
-    .artwork-placeholder-text {
-      color: #b5b5b5;
-      font-size: 12px;
-      font-weight: 400;
-      letter-spacing: 0.1px;
-      text-align: center;
-      padding: 20px;
-    }
-
-    /*
-      When adding an artwork image later:
-
-      <img src="images/work-01.jpg" alt="Artwork title">
-
-      The image will retain its original proportions
-      without being cropped or stretched.
-    */
-
     .artwork-frame img {
       display: block;
       width: 100%;
-      height: 100%;
-      object-fit: contain;
-      object-position: center;
+      height: auto;
+      max-width: 100%;
+      -webkit-user-drag: none;
+      user-select: none;
+      -webkit-user-select: none;
+    }
+
+
+    /* ------------------------------
+       COPYRIGHT NOTICE
+    ------------------------------ */
+
+    .copyright-notice {
+      position: fixed;
+      z-index: 9999;
+      padding: 9px 12px;
+      background: rgba(35, 35, 35, 0.92);
+      color: #ffffff;
+      font-family: 'Wanted Sans Variable', sans-serif;
+      font-size: 11px;
+      font-weight: 400;
+      border-radius: 4px;
+      pointer-events: none;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.15s ease, transform 0.15s ease;
+    }
+
+    .copyright-notice.show {
+      opacity: 1;
+      transform: translateY(0);
     }
 
 
@@ -248,7 +248,7 @@
       }
 
       .artwork-frame {
-        width: min(100%, 420px);
+        width: 100%;
       }
 
       footer {
@@ -395,13 +395,15 @@
 
     <section class="artwork-area">
 
-      <!-- ARTWORK PLACEHOLDER -->
+      <!-- ARTWORK IMAGE -->
 
       <div class="artwork-frame">
 
-        <span class="artwork-placeholder-text">
-          Artwork image
-        </span>
+        <img
+          src="images/Montage-2405_Montage-2406.webp"
+          alt="Montage 2405 and Montage 2406"
+          draggable="false"
+        >
 
       </div>
 
@@ -414,10 +416,20 @@
   <!-- FOOTER -->
 
   <footer>
-
     © 2026 Dasole Oh
-
   </footer>
+
+
+
+  <!-- COPYRIGHT NOTICE -->
+
+  <div
+    class="copyright-notice"
+    id="copyrightNotice"
+    aria-hidden="true"
+  >
+    © Dasole Oh. All rights reserved.
+  </div>
 
 
 
@@ -537,6 +549,65 @@
 
     });
 
+
+
+    /* ------------------------------
+       COPYRIGHT PROTECTION
+    ------------------------------ */
+
+    const artwork = document.querySelector('.artwork-frame');
+    const notice = document.getElementById('copyrightNotice');
+
+    let noticeTimer;
+
+
+    function showCopyrightNotice(event) {
+
+      notice.classList.add('show');
+
+      const noticeWidth = notice.offsetWidth;
+      const noticeHeight = notice.offsetHeight;
+
+      const x = Math.max(
+        8,
+        Math.min(event.clientX + 12, window.innerWidth - noticeWidth - 8)
+      );
+
+      const y = Math.max(
+        8,
+        Math.min(event.clientY + 12, window.innerHeight - noticeHeight - 8)
+      );
+
+      notice.style.left = x + 'px';
+      notice.style.top = y + 'px';
+
+      clearTimeout(noticeTimer);
+
+      noticeTimer = setTimeout(() => {
+        notice.classList.remove('show');
+      }, 2200);
+
+    }
+
+
+    /* Disable right-click on artwork */
+
+    artwork.addEventListener('contextmenu', (event) => {
+
+      event.preventDefault();
+      showCopyrightNotice(event);
+
+    });
+
+
+    /* Disable dragging the artwork */
+
+    artwork.addEventListener('dragstart', (event) => {
+
+      event.preventDefault();
+      showCopyrightNotice(event);
+
+    });
 
   </script>
 
