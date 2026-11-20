@@ -69,7 +69,7 @@
 
     /* Hover color */
 
-    .nav-item:hover > .nav-trigger,
+    .nav-item.is-open > .nav-trigger,
     .nav-item:focus-within > .nav-trigger,
     .nav-link:hover {
       color: #03a890;
@@ -88,8 +88,8 @@
       z-index: 10;
     }
 
-    .nav-item:hover .dropdown,
-    .nav-item:focus-within .dropdown,
+    /* Only the active menu can open */
+
     .nav-item.is-open .dropdown {
       display: block;
     }
@@ -259,52 +259,76 @@
 
   <script>
     const menuItems = document.querySelectorAll('.nav-item');
+    const nav = document.querySelector('nav');
 
-    // Click to open or close dropdown
+    let activeItem = null;
+    let pinnedItem = null;
+
+    // Open only one dropdown at a time
+    function openMenu(item) {
+      menuItems.forEach(menu => {
+        const button = menu.querySelector('.nav-trigger');
+        const isActive = menu === item;
+
+        menu.classList.toggle('is-open', isActive);
+        button.setAttribute('aria-expanded', isActive ? 'true' : 'false');
+      });
+
+      activeItem = item;
+    }
+
+    // Close all dropdowns
+    function closeMenus() {
+      menuItems.forEach(menu => {
+        menu.classList.remove('is-open');
+        menu.querySelector('.nav-trigger')
+          .setAttribute('aria-expanded', 'false');
+      });
+
+      activeItem = null;
+      pinnedItem = null;
+    }
+
+    // Hover: switch directly to the menu under the pointer
     menuItems.forEach(item => {
+
+      item.addEventListener('mouseenter', () => {
+        pinnedItem = null;
+        openMenu(item);
+      });
+
+      // Click: keep the selected menu open
       const button = item.querySelector('.nav-trigger');
 
       button.addEventListener('click', () => {
-        const isOpen = item.classList.contains('is-open');
 
-        menuItems.forEach(otherItem => {
-          otherItem.classList.remove('is-open');
-          otherItem.querySelector('.nav-trigger')
-            .setAttribute('aria-expanded', 'false');
-        });
-
-        if (!isOpen) {
-          item.classList.add('is-open');
-          button.setAttribute('aria-expanded', 'true');
+        if (pinnedItem === item) {
+          closeMenus();
+        } else {
+          pinnedItem = item;
+          openMenu(item);
         }
+
       });
+
     });
 
-    // Close the previously clicked dropdown
-    // when hovering over another menu
-    menuItems.forEach(item => {
-      item.addEventListener('mouseenter', () => {
-        menuItems.forEach(otherItem => {
-          if (otherItem !== item) {
-            otherItem.classList.remove('is-open');
-
-            otherItem.querySelector('.nav-trigger')
-              .setAttribute('aria-expanded', 'false');
-          }
-        });
-      });
-    });
-
-    // Close all dropdowns when clicking outside
-    document.addEventListener('click', event => {
-      if (!event.target.closest('.nav-item')) {
-        menuItems.forEach(item => {
-          item.classList.remove('is-open');
-          item.querySelector('.nav-trigger')
-            .setAttribute('aria-expanded', 'false');
-        });
+    // When leaving the navigation area
+    nav.addEventListener('mouseleave', () => {
+      if (pinnedItem) {
+        openMenu(pinnedItem);
+      } else {
+        closeMenus();
       }
     });
+
+    // Click outside: close all dropdowns
+    document.addEventListener('click', event => {
+      if (!event.target.closest('nav')) {
+        closeMenus();
+      }
+    });
+
   </script>
 
 </body>
