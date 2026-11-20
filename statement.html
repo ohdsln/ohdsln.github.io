@@ -130,7 +130,7 @@
       margin: 0 auto;
     }
 
-    /* PAGE TITLE */
+    /* TITLE */
     .statement-heading {
       margin-bottom: 38px;
     }
@@ -144,7 +144,7 @@
       letter-spacing: -0.4px;
     }
 
-    /* TWO-COLUMN CONTENT */
+    /* TWO COLUMNS */
     .statement-columns {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -169,6 +169,15 @@
 
     .statement-content p:last-child {
       margin-bottom: 0;
+    }
+
+    /* ENGLISH TEXT */
+    .statement-english {
+      word-break: normal;
+    }
+
+    .statement-english p {
+      word-break: normal;
     }
 
     /* FOOTER */
@@ -221,6 +230,11 @@
       .statement-columns {
         display: flex;
         flex-direction: column;
+        gap: 0;
+      }
+
+      .statement-content {
+        max-width: 100%;
       }
 
       .statement-content p {
@@ -229,13 +243,7 @@
         margin-bottom: 25px;
       }
 
-      /* Hide the empty English column until content is added */
-      .statement-english:empty {
-        display: none;
-      }
-
-      /* Separate Korean and English on mobile */
-      .statement-english:not(:empty) {
+      .statement-english {
         margin-top: 32px;
       }
 
@@ -269,6 +277,10 @@
       .statement-content p {
         font-size: 14px;
         line-height: 1.95;
+      }
+
+      .statement-english {
+        margin-top: 27px;
       }
     }
   </style>
@@ -360,15 +372,15 @@
   <main>
     <section class="statement-layout">
 
-      <!-- PAGE TITLE -->
+      <!-- TITLE -->
       <div class="statement-heading">
         <h1 class="statement-title">Artist's Statement</h1>
       </div>
 
-      <!-- TWO-COLUMN CONTENT -->
+      <!-- KOREAN / ENGLISH COLUMNS -->
       <div class="statement-columns">
 
-        <!-- KOREAN VERSION -->
+        <!-- KOREAN -->
         <div class="statement-content statement-korean" lang="ko">
 
           <p>
@@ -389,8 +401,26 @@
 
         </div>
 
-        <!-- ENGLISH VERSION: Add translated paragraphs here -->
-        <div class="statement-content statement-english" lang="en"></div>
+        <!-- ENGLISH -->
+        <div class="statement-content statement-english" lang="en">
+
+          <p>
+            How is the world of memory structured, and how does it operate? This question brings me to the canvas.
+          </p>
+
+          <p>
+            The world of memory may be understood as a space in constant flux, where vivid memories, faded memories, partially erased memories, and fragmented or recombined memories coexist. I conceive of this world as <em>abstraction as structure</em>, or <em>abstraction as landscape</em>. Within it, fragments of memory take form as shapes and images, entering into relationships with one another to constitute structures that are continually transformed, accumulated, and renewed. If the world of memory cannot be reduced to a single image or a fixed order, neither can the painting that seeks to give form to it be confined to a singular, resolved state.
+          </p>
+
+          <p>
+            My work begins with images of spaces and architecture, though not with the intention of representation. I deconstruct source images and extract geometric architectural planes, establishing them as a structural framework. Upon this framework, I repeatedly cut, alter, cover, and rearrange. This process resembles the act of constructing and reorganizing an architectural structure, yet it works not to stabilize that structure but to unsettle it and introduce tension. The traces left on the canvas form accumulated layers of choices and judgments. Previous states are never entirely erased; they persist, colliding with and seeping into what is newly layered over them. Planes and colors function as structural units, at times drawing sharp boundaries and at others eroding one another, revealing the time embedded in the formation of the structure.
+          </p>
+
+          <p>
+            My work resonates with the ways in which memory is transformed and gradually abstracted. Memory is not preserved as a fixed original; to remember something is closer to repeatedly retrieving and reconstructing it in an already faded state. My paintings, too, resist converging toward a singular image. They remain provisional states, shaped by ongoing processes of editing and revision—landscapes that remain open precisely because they are never fully resolved.
+          </p>
+
+        </div>
 
       </div>
     </section>
