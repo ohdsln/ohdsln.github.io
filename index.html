@@ -14,6 +14,7 @@
   >
 
   <style>
+
     /* ------------------------------
        BASIC SETTINGS
     ------------------------------ */
@@ -48,7 +49,7 @@
 
     header {
       width: 100%;
-      padding: 38px 7%;
+      padding: 22px 7% 15px;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
@@ -80,7 +81,7 @@
 
     .nav-trigger {
       display: block;
-      padding: 3px 0 12px;
+      padding: 3px 0 8px;
       border: none;
       background: none;
       color: #555555;
@@ -137,7 +138,7 @@
 
     main {
       width: 100%;
-      padding: 65px 7% 100px;
+      padding: 20px 7% 10px;
     }
 
     .artwork-area {
@@ -147,19 +148,11 @@
       align-items: flex-start;
     }
 
-    /* Landscape artwork
-       Responsive width
-       Original image ratio preserved
-       No cropping or distortion
-    */
-
     .artwork-frame {
       position: relative;
       width: min(100%, 900px);
-      border: 1px solid #e8e8e8;
       background: #fafafa;
       overflow: hidden;
-      cursor: default;
     }
 
     .artwork-frame img {
@@ -167,36 +160,16 @@
       width: 100%;
       height: auto;
       max-width: 100%;
+
+      /* Keep the original image ratio */
+      max-height: calc(100svh - 155px);
+      object-fit: contain;
+      object-position: center;
+
+      /* Disable image dragging and selection */
       -webkit-user-drag: none;
       user-select: none;
       -webkit-user-select: none;
-    }
-
-
-    /* ------------------------------
-       COPYRIGHT NOTICE
-    ------------------------------ */
-
-    .copyright-notice {
-      position: fixed;
-      z-index: 9999;
-      padding: 9px 12px;
-      background: rgba(35, 35, 35, 0.92);
-      color: #ffffff;
-      font-family: 'Wanted Sans Variable', sans-serif;
-      font-size: 11px;
-      font-weight: 400;
-      border-radius: 4px;
-      pointer-events: none;
-      white-space: nowrap;
-      opacity: 0;
-      transform: translateY(4px);
-      transition: opacity 0.15s ease, transform 0.15s ease;
-    }
-
-    .copyright-notice.show {
-      opacity: 1;
-      transform: translateY(0);
     }
 
 
@@ -206,7 +179,7 @@
 
     footer {
       width: 100%;
-      padding: 30px 7% 35px;
+      padding: 12px 7% 18px;
       color: #999999;
       font-size: 11px;
       font-weight: 400;
@@ -220,9 +193,9 @@
     @media (max-width: 768px) {
 
       header {
-        padding: 28px 6%;
+        padding: 22px 6% 12px;
         flex-direction: column;
-        gap: 25px;
+        gap: 16px;
       }
 
       .site-name {
@@ -244,22 +217,32 @@
       }
 
       main {
-        padding: 55px 6% 80px;
+        padding: 18px 6% 8px;
       }
 
       .artwork-frame {
         width: 100%;
       }
 
+      .artwork-frame img {
+        max-height: calc(100svh - 205px);
+      }
+
       footer {
-        padding: 25px 6% 30px;
+        padding: 10px 6% 15px;
       }
     }
 
 
-    /* Small mobile screens */
+    /* ------------------------------
+       SMALL MOBILE SCREENS
+    ------------------------------ */
 
     @media (max-width: 420px) {
+
+      header {
+        gap: 14px;
+      }
 
       nav {
         gap: 10px 18px;
@@ -270,7 +253,11 @@
       }
 
       main {
-        padding-top: 40px;
+        padding-top: 15px;
+      }
+
+      .artwork-frame img {
+        max-height: calc(100svh - 195px);
       }
 
     }
@@ -376,7 +363,7 @@
         <a
           href="#"
           class="nav-trigger"
-          style="padding-bottom: 12px;"
+          style="padding-bottom: 8px;"
         >
           CV/Contact
         </a>
@@ -394,8 +381,6 @@
   <main>
 
     <section class="artwork-area">
-
-      <!-- ARTWORK IMAGE -->
 
       <div class="artwork-frame">
 
@@ -416,20 +401,8 @@
   <!-- FOOTER -->
 
   <footer>
-    © 2026 Dasole Oh
+    © 2026 Dasole Oh. All rights reserved.
   </footer>
-
-
-
-  <!-- COPYRIGHT NOTICE -->
-
-  <div
-    class="copyright-notice"
-    id="copyrightNotice"
-    aria-hidden="true"
-  >
-    © Dasole Oh. All rights reserved.
-  </div>
 
 
 
@@ -556,57 +529,18 @@
     ------------------------------ */
 
     const artwork = document.querySelector('.artwork-frame');
-    const notice = document.getElementById('copyrightNotice');
 
-    let noticeTimer;
-
-
-    function showCopyrightNotice(event) {
-
-      notice.classList.add('show');
-
-      const noticeWidth = notice.offsetWidth;
-      const noticeHeight = notice.offsetHeight;
-
-      const x = Math.max(
-        8,
-        Math.min(event.clientX + 12, window.innerWidth - noticeWidth - 8)
-      );
-
-      const y = Math.max(
-        8,
-        Math.min(event.clientY + 12, window.innerHeight - noticeHeight - 8)
-      );
-
-      notice.style.left = x + 'px';
-      notice.style.top = y + 'px';
-
-      clearTimeout(noticeTimer);
-
-      noticeTimer = setTimeout(() => {
-        notice.classList.remove('show');
-      }, 2200);
-
-    }
-
-
-    /* Disable right-click on artwork */
+    /* Disable right-click without showing any message */
 
     artwork.addEventListener('contextmenu', (event) => {
-
       event.preventDefault();
-      showCopyrightNotice(event);
-
     });
 
 
-    /* Disable dragging the artwork */
+    /* Disable image dragging */
 
     artwork.addEventListener('dragstart', (event) => {
-
       event.preventDefault();
-      showCopyrightNotice(event);
-
     });
 
   </script>
