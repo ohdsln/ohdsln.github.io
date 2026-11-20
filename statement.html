@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Artist's Statement | Dasole Oh</title>
+
+  <!-- Wanted Sans -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.min.css"
+  >
+
+  <style>
+    /* BASIC SETTINGS */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #222222;
+      font-family: 'Wanted Sans Variable', sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      padding: 22px 7% 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .site-name {
+      flex-shrink: 0;
+      font-size: 21px;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      line-height: 1.3;
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      align-items: flex-start;
+      gap: 34px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-trigger {
+      display: block;
+      padding: 3px 0 8px;
+      border: none;
+      background: none;
+      color: #555555;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .nav-trigger:hover,
+    .nav-item.is-open .nav-trigger,
+    .nav-item:focus-within .nav-trigger {
+      color: #03a890;
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      min-width: 190px;
+      padding: 8px 12px 12px;
+      background: #ffffff;
+      z-index: 10;
+    }
+
+    .nav-item.is-open .dropdown {
+      display: block;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 7px 0;
+      color: #777777;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .dropdown a:hover {
+      color: #03a890;
+    }
+
+    /* STATEMENT LAYOUT */
+    main {
+      width: 100%;
+      padding: 75px 7% 100px;
+    }
+
+    .statement-layout {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 260px minmax(0, 650px);
+      column-gap: 55px;
+      align-items: start;
+    }
+
+    /* LEFT TITLE AREA */
+    .statement-heading {
+      position: sticky;
+      top: 40px;
+    }
+
+    .section-label {
+      margin: 0 0 18px;
+      color: #999999;
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: 0.5px;
+    }
+
+    .statement-title {
+      margin: 0;
+      color: #222222;
+      font-size: 20px;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: -0.4px;
+    }
+
+    /* RIGHT TEXT AREA */
+    .statement-content {
+      width: 100%;
+      max-width: 650px;
+    }
+
+    .statement-content p {
+      margin: 0 0 28px;
+      color: #444444;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 2.05;
+      letter-spacing: -0.15px;
+      word-break: keep-all;
+    }
+
+    .statement-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* FOOTER */
+    footer {
+      width: 100%;
+      padding: 12px 7% 18px;
+      color: #999999;
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    /* TABLET / MOBILE */
+    @media (max-width: 768px) {
+      header {
+        padding: 22px 6% 12px;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .site-name {
+        font-size: 20px;
+      }
+
+      nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+      }
+
+      .nav-trigger {
+        font-size: 13px;
+      }
+
+      .dropdown {
+        min-width: 170px;
+      }
+
+      main {
+        padding: 55px 6% 75px;
+      }
+
+      .statement-layout {
+        grid-template-columns: 1fr;
+        row-gap: 32px;
+      }
+
+      .statement-heading {
+        position: static;
+      }
+
+      .section-label {
+        margin-bottom: 12px;
+      }
+
+      .statement-title {
+        font-size: 19px;
+      }
+
+      .statement-content {
+        max-width: 100%;
+      }
+
+      .statement-content p {
+        font-size: 14px;
+        line-height: 2;
+        margin-bottom: 25px;
+      }
+
+      footer {
+        padding: 10px 6% 15px;
+      }
+    }
+
+    /* SMALL MOBILE SCREENS */
+    @media (max-width: 420px) {
+      header {
+        gap: 14px;
+      }
+
+      nav {
+        gap: 10px 18px;
+      }
+
+      .nav-trigger {
+        font-size: 12px;
+      }
+
+      main {
+        padding-top: 45px;
+      }
+
+      .statement-layout {
+        row-gap: 27px;
+      }
+
+      .statement-content p {
+        font-size: 14px;
+        line-height: 1.95;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="site-name">
+      Dasole Oh
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav id="main-nav">
+
+      <!-- WORKS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Works
+        </button>
+
+        <div class="dropdown">
+          <a href="#">2025–2026</a>
+          <a href="#">2025</a>
+          <a href="#">2024</a>
+          <a href="#">2022–2023</a>
+          <a href="#">2020–2021</a>
+          <a href="#">2019</a>
+          <a href="#">2017–2018</a>
+          <a href="#">Works on Paper</a>
+        </div>
+      </div>
+
+      <!-- EXHIBITIONS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Exhibitions
+        </button>
+
+        <div class="dropdown">
+          <a href="#">Into the Grains (2025)</a>
+          <a href="#">Two: One, and Another (2024)</a>
+          <a href="#">Strata of the Vulnerables (2023)</a>
+        </div>
+      </div>
+
+      <!-- TEXTS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Texts
+        </button>
+
+        <div class="dropdown">
+          <a href="statement.html">Artist's Statement</a>
+          <a href="#">Note - about my drawings</a>
+          <a href="#">Exhibition Review -1 (2023)</a>
+          <a href="#">Exhibition Review -2 (2023)</a>
+        </div>
+      </div>
+
+      <!-- CV / CONTACT -->
+      <div class="nav-item">
+        <a
+          href="#"
+          class="nav-trigger"
+          style="padding-bottom: 8px;"
+        >
+          CV/Contact
+        </a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <section class="statement-layout">
+
+      <!-- LEFT TITLE -->
+      <div class="statement-heading">
+        <p class="section-label">TEXTS / 01</p>
+        <h1 class="statement-title">Artist's Statement</h1>
+      </div>
+
+      <!-- RIGHT TEXT -->
+      <div class="statement-content">
+
+        <p>
+          “기억의 세계는 어떻게 구성되고 작동하는가” – 이 질문은 나를 캔버스 앞에 세운다.
+        </p>
+
+        <p>
+          기억의 세계는 선명한 기억, 바랜 기억, 지워지다 만 기억, 짜깁기된 기억들이 뒤섞여 계속 변화하고 유동하는 공간일 것이다. 이 모습을 나는 ‘구조로서의 추상’, 혹은 ‘풍경으로서의 추상’으로 상정한다. 그 안에서 기억의 조각들은 형과 상이 되어 서로 관계 맺으며 구조를 이루고, 그 구조는 지속적으로 변형되고 축적되며 스스로를 갱신한다. 기억의 세계가 단일한 이미지나 확정된 질서로 환원될 수 없다면, 그것을 담아내는 회화 또한 하나의 완결된 상태로 고정될 수 없다.
+        </p>
+
+        <p>
+          작업은 공간과 건축의 이미지에서 출발하지만, 재현을 목적으로 삼지 않는다. 원본 이미지를 해체하여 추출한 건축의 기하학적 면들을 골격으로 세우고, 그 위에서 자르고, 변형하고, 덮고, 재배치하기를 반복한다. 이 과정은 구조를 짓고 다시 조정하는 건축 행위와 닮아 있지만, 동시에 그 구조를 안정시키기보다 흔들고 긴장시키는 방향으로 작동한다. 화면에 새겨지는 흔적들은 수많은 선택과 판단이 퇴적된 층위이며, 이전의 상태는 완전히 지워지지 않고 새로 쌓이는 것들과 충돌하고 스며들며 잔존한다. 면과 색은 이 구조를 이루는 단위로 작동하면서, 때로는 날카롭게 경계를 긋고 때로는 서로 침식하며 구조가 형성되어온 시간을 드러낸다.
+        </p>
+
+        <p>
+          이 작업은 기억이 변형되고 추상화되어 가는 방식과 맞닿아있다. 기억은 고정된 원본으로 보존되지 않으며, 무언가를 기억한다는 것은 이미 퇴색된 상태를 반복해서 불러내고 다시 구성하는 과정에 가깝다. 나의 회화 역시 특정한 이미지를 향해 수렴하지 않고, 지속되는 편집과 수정 과정 속에 있는 하나의 잠정적인 상태, 끝나지 않음으로써 열려있는 풍경이다.
+        </p>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Dasole Oh. All rights reserved.
+  </footer>
+
+  <!-- NAVIGATION SCRIPT -->
+  <script>
+    const nav = document.getElementById('main-nav');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    let activeItem = null;
+    let pinnedItem = null;
+
+    function closeMenus() {
+      navItems.forEach(item => {
+        item.classList.remove('is-open');
+
+        const button = item.querySelector('.nav-trigger');
+
+        if (button && button.tagName === 'BUTTON') {
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      activeItem = null;
+      pinnedItem = null;
+    }
+
+    function openMenu(item) {
+      navItems.forEach(menu => {
+        menu.classList.remove('is-open');
+
+        const button = menu.querySelector('.nav-trigger');
+
+        if (button && button.tagName === 'BUTTON') {
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (activeItem === item && !pinnedItem) {
+        activeItem = null;
+        return;
+      }
+
+      item.classList.add('is-open');
+
+      const button = item.querySelector('.nav-trigger');
+
+      if (button && button.tagName === 'BUTTON') {
+        button.setAttribute('aria-expanded', 'true');
+      }
+
+      activeItem = item;
+    }
+
+    navItems.forEach(item => {
+      const button = item.querySelector('button.nav-trigger');
+
+      item.addEventListener('mouseenter', () => {
+        if (window.matchMedia('(hover: hover)').matches) {
+          pinnedItem = null;
+          openMenu(item);
+        }
+      });
+
+      if (button) {
+        button.addEventListener('click', (event) => {
+          event.stopPropagation();
+
+          if (pinnedItem === item) {
+            closeMenus();
+          } else {
+            pinnedItem = item;
+            openMenu(item);
+          }
+        });
+      }
+    });
+
+    nav.addEventListener('mouseleave', () => {
+      if (pinnedItem) {
+        return;
+      }
+
+      closeMenus();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!nav.contains(event.target)) {
+        closeMenus();
+      }
+    });
+  </script>
+
+</body>
+</html>
