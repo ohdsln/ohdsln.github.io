@@ -4,27 +4,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>CV / Contact | Dasole Oh</title>
 
-  <style>
-    @font-face {
-      font-family: 'Wanted Sans';
-      src: url('https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/WOFF2/WantedSansVariable.woff2') format('woff2');
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
-    }
+  <!-- Wanted Sans -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.min.css"
+  >
 
+  <style>
+    /* BASIC SETTINGS */
     * {
       box-sizing: border-box;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       margin: 0;
-      background: #fff;
-      color: #222;
-      font-family: 'Wanted Sans', sans-serif;
+      padding: 0;
+      background: #ffffff;
+      color: #222222;
+      font-family: 'Wanted Sans Variable', sans-serif;
       font-weight: 400;
+      -webkit-font-smoothing: antialiased;
     }
 
     a {
@@ -32,41 +38,29 @@
       text-decoration: none;
     }
 
-    /* Header */
-
+    /* HEADER */
     header {
+      width: 100%;
       padding: 22px 7% 15px;
-    }
-
-    .header-inner {
       display: flex;
       justify-content: space-between;
-      align-items: center;
+      align-items: flex-start;
+      gap: 40px;
     }
 
     .site-name {
+      flex-shrink: 0;
       font-size: 21px;
-      font-weight: 500;
+      font-weight: 400;
       letter-spacing: -0.5px;
+      line-height: 1.3;
     }
 
+    /* NAVIGATION */
     nav {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 34px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    nav a,
-    .nav-trigger {
-      transition: color 0.2s ease;
-    }
-
-    nav a:hover,
-    .nav-item:hover > .nav-trigger,
-    .nav-item.open > .nav-trigger {
-      color: #03a890;
     }
 
     .nav-item {
@@ -74,9 +68,26 @@
     }
 
     .nav-trigger {
+      display: block;
+      padding: 3px 0 8px;
+      border: none;
+      background: none;
+      color: #555555;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
       cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s ease;
     }
 
+    .nav-trigger:hover,
+    .nav-item.is-open .nav-trigger,
+    .nav-item:focus-within .nav-trigger {
+      color: #03a890;
+    }
+
+    /* DROPDOWN */
     .dropdown {
       display: none;
       position: absolute;
@@ -84,24 +95,61 @@
       left: -12px;
       min-width: 190px;
       padding: 8px 12px 12px;
-      background: #fff;
+      background: #ffffff;
       z-index: 10;
     }
 
-    .nav-item:hover .dropdown,
-    .nav-item.open .dropdown {
+    .nav-item.is-open .dropdown {
       display: block;
     }
 
     .dropdown a {
       display: block;
       padding: 7px 0;
+      color: #777777;
       font-size: 13px;
+      font-weight: 400;
+      line-height: 1.5;
       white-space: nowrap;
+      transition: color 0.2s ease;
     }
 
-    /* Main */
+    .dropdown a:hover {
+      color: #03a890;
+    }
 
+    /* CONTACT ICONS */
+    .header-contact {
+      display: flex;
+      align-items: flex-start;
+      gap: 19px;
+    }
+
+    .contact-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 0 8px;
+      color: #555555;
+      transition: color 0.2s ease;
+    }
+
+    .contact-icon:hover {
+      color: #03a890;
+    }
+
+    .contact-icon svg {
+      display: block;
+      width: 17px;
+      height: 17px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* MAIN */
     main {
       padding: 75px 7% 100px;
     }
@@ -109,13 +157,6 @@
     .cv-container {
       max-width: 1100px;
       margin: 0 auto;
-    }
-
-    .page-title {
-      margin: 0 0 48px;
-      font-size: 17px;
-      font-weight: 500;
-      letter-spacing: -0.2px;
     }
 
     .cv-section {
@@ -138,94 +179,69 @@
     }
 
     .cv-year {
-      color: #777;
+      color: #777777;
       font-variant-numeric: tabular-nums;
     }
 
     .cv-detail {
-      color: #333;
+      color: #333333;
     }
 
     .cv-venue {
-      color: #777;
+      color: #777777;
       font-size: 13px;
     }
 
-    /* Contact */
-
-    .contact-section {
-      margin-top: 62px;
-      padding-top: 28px;
-      border-top: 1px solid #e5e5e5;
-    }
-
-    .contact-links {
-      display: flex;
-      align-items: center;
-      gap: 25px;
-    }
-
-    .contact-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      color: #555;
-      font-size: 13px;
-      transition: color 0.2s ease;
-    }
-
-    .contact-link:hover {
-      color: #03a890;
-    }
-
-    .contact-link svg {
-      width: 17px;
-      height: 17px;
-      stroke: currentColor;
-      fill: none;
-      stroke-width: 1.6;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-
-    /* Footer */
-
+    /* FOOTER */
     footer {
-      padding: 0 7% 24px;
-      color: #999;
+      width: 100%;
+      padding: 12px 7% 18px;
+      color: #999999;
       font-size: 11px;
-      text-align: center;
+      font-weight: 400;
     }
 
-    /* Mobile */
-
+    /* TABLET / MOBILE */
     @media (max-width: 768px) {
       header {
-        padding: 22px 6% 15px;
+        padding: 22px 6% 12px;
+        flex-direction: column;
+        gap: 16px;
       }
 
-      .header-inner {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 18px;
+      .site-name {
+        font-size: 20px;
       }
 
       nav {
+        width: 100%;
         flex-wrap: wrap;
         gap: 12px 24px;
+      }
+
+      .nav-trigger {
         font-size: 13px;
       }
 
+      .header-contact {
+        gap: 18px;
+      }
+
+      .contact-icon {
+        padding-top: 1px;
+      }
+
+      .contact-icon svg {
+        width: 16px;
+        height: 16px;
+      }
+
       .dropdown {
-        left: -8px;
+        min-width: 170px;
       }
 
       main {
         padding: 55px 6% 75px;
-      }
-
-      .page-title {
-        margin-bottom: 38px;
       }
 
       .cv-section {
@@ -243,22 +259,27 @@
         font-size: 12px;
       }
 
-      .contact-section {
-        margin-top: 48px;
-      }
-
       footer {
-        padding: 0 6% 22px;
+        padding: 10px 6% 15px;
       }
     }
 
+    /* SMALL MOBILE SCREENS */
     @media (max-width: 420px) {
-      main {
-        padding-top: 45px;
+      header {
+        gap: 14px;
       }
 
-      .page-title {
-        margin-bottom: 32px;
+      nav {
+        gap: 10px 18px;
+      }
+
+      .nav-trigger {
+        font-size: 12px;
+      }
+
+      main {
+        padding-top: 45px;
       }
 
       .section-title {
@@ -280,44 +301,124 @@
 
 <body>
 
+  <!-- HEADER -->
   <header>
-    <div class="header-inner">
+    <a href="index.html" class="site-name">
+      Dasole Oh
+    </a>
 
-      <a href="index.html" class="site-name">Dasole Oh</a>
+    <!-- NAVIGATION -->
+    <nav id="main-nav">
 
-      <nav>
-        <div class="nav-item">
-          <a href="index.html" class="nav-trigger">Works</a>
+      <!-- WORKS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Works
+        </button>
+
+        <div class="dropdown">
+          <a href="#">2025–2026</a>
+          <a href="#">2025</a>
+          <a href="#">2024</a>
+          <a href="#">2022–2023</a>
+          <a href="#">2020–2021</a>
+          <a href="#">2019</a>
+          <a href="#">2017–2018</a>
+          <a href="#">Works on Paper</a>
         </div>
+      </div>
 
-        <div class="nav-item">
-          <a href="index.html" class="nav-trigger">Exhibitions</a>
+      <!-- EXHIBITIONS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Exhibitions
+        </button>
+
+        <div class="dropdown">
+          <a href="#">Into the Grains (2025)</a>
+          <a href="#">Two: One, and Another (2024)</a>
+          <a href="#">Strata of the Vulnerables (2023)</a>
         </div>
+      </div>
 
-        <div class="nav-item">
-          <a href="#" class="nav-trigger">Texts</a>
-          <div class="dropdown">
-            <a href="statement.html">Artist's Statement</a>
-          </div>
+      <!-- TEXTS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Texts
+        </button>
+
+        <div class="dropdown">
+          <a href="statement.html">Artist's Statement</a>
+          <a href="#">Note - about my drawings</a>
+          <a href="#">Exhibition Review -1 (2023)</a>
+          <a href="#">Exhibition Review -2 (2023)</a>
         </div>
+      </div>
 
-        <div class="nav-item">
-          <a href="cv-contact.html" class="nav-trigger">CV/Contact</a>
-        </div>
-      </nav>
+      <!-- CV / CONTACT -->
+      <div class="nav-item">
+        <a
+          href="cv-contact.html"
+          class="nav-trigger"
+          style="padding-bottom: 8px;"
+        >
+          CV/Contact
+        </a>
+      </div>
 
-    </div>
+      <!-- INSTAGRAM / EMAIL -->
+      <div class="header-contact">
+
+        <!-- Instagram: replace # with your Instagram URL -->
+        <a
+          href="#"
+          class="contact-icon"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram"
+        >
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+            <circle cx="12" cy="12" r="4"></circle>
+            <circle cx="18" cy="6" r="0.8" fill="currentColor" stroke="none"></circle>
+          </svg>
+        </a>
+
+        <!-- Email: replace # with mailto:your@email.com -->
+        <a
+          href="#"
+          class="contact-icon"
+          aria-label="Email"
+        >
+          <svg viewBox="0 0 24 24">
+            <rect x="3" y="5" width="18" height="14" rx="1"></rect>
+            <path d="M3 6l9 7 9-7"></path>
+          </svg>
+        </a>
+
+      </div>
+
+    </nav>
   </header>
 
 
+  <!-- MAIN -->
   <main>
     <div class="cv-container">
 
-      <h1 class="page-title">Curriculum Vitae</h1>
-
-
-      <!-- Education -->
-
+      <!-- EDUCATION -->
       <section class="cv-section">
 
         <h2 class="section-title">Education</h2>
@@ -341,8 +442,7 @@
       </section>
 
 
-      <!-- Solo Exhibitions -->
-
+      <!-- SOLO EXHIBITIONS -->
       <section class="cv-section">
 
         <h2 class="section-title">Solo Exhibitions</h2>
@@ -390,8 +490,7 @@
       </section>
 
 
-      <!-- Group Exhibitions -->
-
+      <!-- GROUP EXHIBITIONS -->
       <section class="cv-section">
 
         <h2 class="section-title">Selected Group Exhibitions</h2>
@@ -406,80 +505,100 @@
 
       </section>
 
-
-      <!-- Contact -->
-
-      <section class="contact-section">
-
-        <div class="contact-links">
-
-          <!-- Instagram: replace # with your Instagram profile URL -->
-          <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
-
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-              <circle cx="12" cy="12" r="4"></circle>
-              <circle cx="18" cy="6" r="0.8" fill="currentColor" stroke="none"></circle>
-            </svg>
-
-            <span>Instagram</span>
-
-          </a>
-
-
-          <!-- Email: replace # with your email address using mailto: -->
-          <a href="#" class="contact-link" aria-label="Email">
-
-            <svg viewBox="0 0 24 24">
-              <rect x="3" y="5" width="18" height="14" rx="1"></rect>
-              <path d="M3 6l9 7 9-7"></path>
-            </svg>
-
-            <span>Email</span>
-
-          </a>
-
-        </div>
-
-      </section>
-
     </div>
   </main>
 
 
+  <!-- FOOTER -->
   <footer>
     © 2026 Dasole Oh. All rights reserved.
   </footer>
 
 
+  <!-- NAVIGATION SCRIPT -->
   <script>
+    const nav = document.getElementById('main-nav');
     const navItems = document.querySelectorAll('.nav-item');
 
-    navItems.forEach(item => {
-      const trigger = item.querySelector('.nav-trigger');
+    let activeItem = null;
+    let pinnedItem = null;
 
-      trigger.addEventListener('click', function(event) {
-        const dropdown = item.querySelector('.dropdown');
+    function closeMenus() {
+      navItems.forEach(item => {
+        item.classList.remove('is-open');
 
-        if (dropdown) {
-          event.preventDefault();
-
-          navItems.forEach(otherItem => {
-            if (otherItem !== item) {
-              otherItem.classList.remove('open');
-            }
-          });
-
-          item.classList.toggle('open');
+        const button = item.querySelector('.nav-trigger');
+        if (button && button.tagName === 'BUTTON') {
+          button.setAttribute('aria-expanded', 'false');
         }
       });
+
+      activeItem = null;
+      pinnedItem = null;
+    }
+
+    function openMenu(item) {
+      navItems.forEach(menu => {
+        menu.classList.remove('is-open');
+
+        const button = menu.querySelector('.nav-trigger');
+
+        if (button && button.tagName === 'BUTTON') {
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (activeItem === item && !pinnedItem) {
+        activeItem = null;
+        return;
+      }
+
+      item.classList.add('is-open');
+
+      const button = item.querySelector('.nav-trigger');
+
+      if (button && button.tagName === 'BUTTON') {
+        button.setAttribute('aria-expanded', 'true');
+      }
+
+      activeItem = item;
+    }
+
+    navItems.forEach(item => {
+      const button = item.querySelector('button.nav-trigger');
+
+      item.addEventListener('mouseenter', () => {
+        if (window.matchMedia('(hover: hover)').matches) {
+          pinnedItem = null;
+          openMenu(item);
+        }
+      });
+
+      if (button) {
+        button.addEventListener('click', (event) => {
+          event.stopPropagation();
+
+          if (pinnedItem === item) {
+            closeMenus();
+          } else {
+            pinnedItem = item;
+            openMenu(item);
+          }
+        });
+      }
     });
 
-    document.addEventListener('click', function(event) {
-      if (!event.target.closest('.nav-item')) {
-        navItems.forEach(item => {
-          item.classList.remove('open');
-        });
+    nav.addEventListener('mouseleave', () => {
+      if (pinnedItem) {
+        return;
+      }
+
+      closeMenus();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!nav.contains(event.target)) {
+        closeMenus();
       }
     });
   </script>
