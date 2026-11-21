@@ -126,6 +126,30 @@
       margin: 0 auto;
     }
 
+    /* ARTIST NAME */
+    .artist-name {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 17px;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: -0.3px;
+      line-height: 1.4;
+    }
+
+    .artist-name-ko,
+    .artist-name-en {
+      font-size: inherit;
+      font-weight: inherit;
+    }
+
+    .artist-name-divider {
+      width: 1px;
+      height: 16px;
+      background: #dddddd;
+    }
+
     /* CONTACT */
     .page-contact {
       display: flex;
@@ -245,6 +269,12 @@
         padding: 55px 6% 75px;
       }
 
+      .artist-name {
+        font-size: 17px;
+        gap: 12px;
+        margin-bottom: 15px;
+      }
+
       .page-contact {
         margin-bottom: 40px;
       }
@@ -298,6 +328,15 @@
 
       .section-title {
         font-size: 14px;
+      }
+
+      .artist-name {
+        font-size: 16px;
+        gap: 11px;
+      }
+
+      .artist-name-divider {
+        height: 14px;
       }
 
       .page-contact {
@@ -393,6 +432,14 @@
   <!-- MAIN -->
   <main>
     <div class="cv-container">
+
+      <!-- ARTIST NAME -->
+      <div class="artist-name">
+        <span class="artist-name-ko">오다솔</span>
+        <span class="artist-name-divider"></span>
+        <span class="artist-name-en">Dasole Oh</span>
+      </div>
+
 
       <!-- CONTACT -->
       <div class="page-contact">
@@ -698,12 +745,18 @@
 
           <div class="cv-entry">
             <div class="cv-year">2003</div>
-            <div class="cv-detail">Graduated from Sunhwa Arts High School</div>
+            <div class="cv-detail">
+              Graduated from Sunhwa Arts High School<br>
+              <span class="cv-venue">Major in Fine Arts</span>
+            </div>
           </div>
 
           <div class="cv-entry">
             <div class="cv-year">2000</div>
-            <div class="cv-detail">Graduated from Sunhwa Arts Middle School</div>
+            <div class="cv-detail">
+              Graduated from Sunhwa Arts Middle School<br>
+              <span class="cv-venue">Major in Fine Arts</span>
+            </div>
           </div>
         </section>
 
