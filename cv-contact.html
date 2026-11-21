@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV / Contact | Dasole Oh</title>
+
+  <style>
+    @font-face {
+      font-family: 'Wanted Sans';
+      src: url('https://cdn.jsdelivr.net/gh/wanteddev/wanted-sans@v1.0.3/packages/wanted-sans/fonts/webfonts/WOFF2/WantedSansVariable.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: #fff;
+      color: #222;
+      font-family: 'Wanted Sans', sans-serif;
+      font-weight: 400;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Header */
+
+    header {
+      padding: 22px 7% 15px;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .site-name {
+      font-size: 21px;
+      font-weight: 500;
+      letter-spacing: -0.5px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 34px;
+      font-size: 14px;
+      color: #555;
+    }
+
+    nav a,
+    .nav-trigger {
+      transition: color 0.2s ease;
+    }
+
+    nav a:hover,
+    .nav-item:hover > .nav-trigger,
+    .nav-item.open > .nav-trigger {
+      color: #03a890;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-trigger {
+      cursor: pointer;
+    }
+
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      min-width: 190px;
+      padding: 8px 12px 12px;
+      background: #fff;
+      z-index: 10;
+    }
+
+    .nav-item:hover .dropdown,
+    .nav-item.open .dropdown {
+      display: block;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 7px 0;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    /* Main */
+
+    main {
+      padding: 75px 7% 100px;
+    }
+
+    .cv-container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .page-title {
+      margin: 0 0 48px;
+      font-size: 17px;
+      font-weight: 500;
+      letter-spacing: -0.2px;
+    }
+
+    .cv-section {
+      margin-bottom: 46px;
+    }
+
+    .section-title {
+      margin: 0 0 22px;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    .cv-entry {
+      display: grid;
+      grid-template-columns: 70px minmax(0, 1fr);
+      column-gap: 20px;
+      margin-bottom: 17px;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .cv-year {
+      color: #777;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .cv-detail {
+      color: #333;
+    }
+
+    .cv-venue {
+      color: #777;
+      font-size: 13px;
+    }
+
+    /* Contact */
+
+    .contact-section {
+      margin-top: 62px;
+      padding-top: 28px;
+      border-top: 1px solid #e5e5e5;
+    }
+
+    .contact-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: #555;
+      font-size: 13px;
+      transition: color 0.2s ease;
+    }
+
+    .contact-link:hover {
+      color: #03a890;
+    }
+
+    .contact-link svg {
+      width: 17px;
+      height: 17px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.6;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    /* Footer */
+
+    footer {
+      padding: 0 7% 24px;
+      color: #999;
+      font-size: 11px;
+      text-align: center;
+    }
+
+    /* Mobile */
+
+    @media (max-width: 768px) {
+      header {
+        padding: 22px 6% 15px;
+      }
+
+      .header-inner {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 12px 24px;
+        font-size: 13px;
+      }
+
+      .dropdown {
+        left: -8px;
+      }
+
+      main {
+        padding: 55px 6% 75px;
+      }
+
+      .page-title {
+        margin-bottom: 38px;
+      }
+
+      .cv-section {
+        margin-bottom: 40px;
+      }
+
+      .cv-entry {
+        grid-template-columns: 55px minmax(0, 1fr);
+        column-gap: 13px;
+        font-size: 13px;
+        margin-bottom: 15px;
+      }
+
+      .cv-venue {
+        font-size: 12px;
+      }
+
+      .contact-section {
+        margin-top: 48px;
+      }
+
+      footer {
+        padding: 0 6% 22px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      main {
+        padding-top: 45px;
+      }
+
+      .page-title {
+        margin-bottom: 32px;
+      }
+
+      .section-title {
+        font-size: 14px;
+      }
+
+      .cv-entry {
+        grid-template-columns: 48px minmax(0, 1fr);
+        column-gap: 10px;
+        font-size: 12.5px;
+      }
+
+      .cv-venue {
+        font-size: 11.5px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="header-inner">
+
+      <a href="index.html" class="site-name">Dasole Oh</a>
+
+      <nav>
+        <div class="nav-item">
+          <a href="index.html" class="nav-trigger">Works</a>
+        </div>
+
+        <div class="nav-item">
+          <a href="index.html" class="nav-trigger">Exhibitions</a>
+        </div>
+
+        <div class="nav-item">
+          <a href="#" class="nav-trigger">Texts</a>
+          <div class="dropdown">
+            <a href="statement.html">Artist's Statement</a>
+          </div>
+        </div>
+
+        <div class="nav-item">
+          <a href="cv-contact.html" class="nav-trigger">CV/Contact</a>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <main>
+    <div class="cv-container">
+
+      <h1 class="page-title">Curriculum Vitae</h1>
+
+
+      <!-- Education -->
+
+      <section class="cv-section">
+
+        <h2 class="section-title">Education</h2>
+
+        <div class="cv-entry">
+          <div class="cv-year">2019</div>
+          <div class="cv-detail">
+            M.F.A. in Painting<br>
+            <span class="cv-venue">Hongik University, Seoul, Korea</span>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-year">2008</div>
+          <div class="cv-detail">
+            B.A. in Environmental Design<br>
+            <span class="cv-venue">Ewha Womans University, Seoul, Korea</span>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- Solo Exhibitions -->
+
+      <section class="cv-section">
+
+        <h2 class="section-title">Solo Exhibitions</h2>
+
+        <div class="cv-entry">
+          <div class="cv-year">2025</div>
+          <div class="cv-detail">
+            Into the Grain<br>
+            <span class="cv-venue">False Space Gallery, Incheon, Korea</span>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-year">2024</div>
+          <div class="cv-detail">
+            Two: One, and Another<br>
+            <span class="cv-venue">GBLUE Gallery / Drawing Room 403, Korea</span>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-year">2023</div>
+          <div class="cv-detail">
+            Strata of the Vulnerables<br>
+            <span class="cv-venue">Baedari Itta Space, Incheon, Korea</span>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-year">2022</div>
+          <div class="cv-detail">
+            Strata of the Vulnerables<br>
+            <span class="cv-venue">Out of the Box, Seoul, Korea</span>
+          </div>
+        </div>
+
+        <div class="cv-entry">
+          <div class="cv-year">2019</div>
+          <div class="cv-detail">
+            Montage<br>
+            <span class="cv-venue">SPACE Gallery, Seoul, Korea</span>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- Group Exhibitions -->
+
+      <section class="cv-section">
+
+        <h2 class="section-title">Selected Group Exhibitions</h2>
+
+        <div class="cv-entry">
+          <div class="cv-year">2026</div>
+          <div class="cv-detail">
+            Gyeonggi Island Art Festa<br>
+            <span class="cv-venue">Gyeonggi Creative Campus Public Gallery, Korea</span>
+          </div>
+        </div>
+
+      </section>
+
+
+      <!-- Contact -->
+
+      <section class="contact-section">
+
+        <div class="contact-links">
+
+          <!-- Instagram: replace # with your Instagram profile URL -->
+          <a href="#" class="contact-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+              <circle cx="12" cy="12" r="4"></circle>
+              <circle cx="18" cy="6" r="0.8" fill="currentColor" stroke="none"></circle>
+            </svg>
+
+            <span>Instagram</span>
+
+          </a>
+
+
+          <!-- Email: replace # with your email address using mailto: -->
+          <a href="#" class="contact-link" aria-label="Email">
+
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="5" width="18" height="14" rx="1"></rect>
+              <path d="M3 6l9 7 9-7"></path>
+            </svg>
+
+            <span>Email</span>
+
+          </a>
+
+        </div>
+
+      </section>
+
+    </div>
+  </main>
+
+
+  <footer>
+    © 2026 Dasole Oh. All rights reserved.
+  </footer>
+
+
+  <script>
+    const navItems = document.querySelectorAll('.nav-item');
+
+    navItems.forEach(item => {
+      const trigger = item.querySelector('.nav-trigger');
+
+      trigger.addEventListener('click', function(event) {
+        const dropdown = item.querySelector('.dropdown');
+
+        if (dropdown) {
+          event.preventDefault();
+
+          navItems.forEach(otherItem => {
+            if (otherItem !== item) {
+              otherItem.classList.remove('open');
+            }
+          });
+
+          item.classList.toggle('open');
+        }
+      });
+    });
+
+    document.addEventListener('click', function(event) {
+      if (!event.target.closest('.nav-item')) {
+        navItems.forEach(item => {
+          item.classList.remove('open');
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
