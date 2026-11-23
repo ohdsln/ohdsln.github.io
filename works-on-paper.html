@@ -151,22 +151,26 @@
 
     /* ABOUT SECTION */
     .about-section {
-      margin-bottom: 55px;
+      width: 100%;
+      max-width: 850px;
+      margin: 0 auto 55px;
+      padding: 25px 30px;
+      border: 1px solid #e5e5e5;
+      background: #ffffff;
     }
 
     .about-toggle {
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
-      gap: 24px;
-      padding: 0 0 14px;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 0;
       border: none;
-      border-bottom: 1px solid #e5e5e5;
       background: none;
       color: #333333;
       font-family: inherit;
-      text-align: center;
+      text-align: left;
       cursor: pointer;
     }
 
@@ -202,10 +206,10 @@
 
     .about-text {
       display: none;
-      padding: 23px 0 0;
-      max-width: 850px;
-      margin: 0 auto;
-      text-align: center;
+      padding: 22px 0 0;
+      max-width: 100%;
+      margin: 0;
+      text-align: left;
     }
 
     .about-text.is-open {
@@ -213,7 +217,7 @@
     }
 
     .about-text p {
-      margin: 0 0 22px;
+      margin: 0 0 20px;
       color: #555555;
       font-size: 14px;
       font-weight: 400;
@@ -326,7 +330,7 @@
       align-items: center;
       justify-content: center;
       padding: 55px 40px;
-      background: rgba(0, 0, 0, 0.96);
+      background: #ffffff;
     }
 
     .image-modal.is-open {
@@ -352,7 +356,7 @@
       padding: 0;
       border: none;
       background: transparent;
-      color: #ffffff;
+      color: #555555;
       font-family: Arial, sans-serif;
       font-size: 34px;
       font-weight: 200;
@@ -411,6 +415,7 @@
 
       .about-section {
         margin-bottom: 42px;
+        padding: 22px 24px;
       }
 
       .about-text {
@@ -477,6 +482,19 @@
 
       .about-section {
         margin-bottom: 35px;
+        padding: 19px 18px;
+      }
+
+      .about-toggle {
+        gap: 12px;
+      }
+
+      .about-title {
+        font-size: 13px;
+      }
+
+      .about-toggle-label {
+        font-size: 11px;
       }
 
       .works-list {
