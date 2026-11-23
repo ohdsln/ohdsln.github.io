@@ -463,35 +463,76 @@
   <header>
     <a href="index.html" class="site-logo">Dasole Oh</a>
 
-    <nav>
+    <!-- NAVIGATION -->
+    <nav id="main-nav">
+
+      <!-- WORKS -->
       <div class="nav-item">
-        <a href="works.html" class="nav-link">Works</a>
+        <button
+          class="nav-link"
+          type="button"
+          aria-expanded="false"
+        >
+          Works
+        </button>
+
         <div class="dropdown-menu">
-          <a href="works-on-canvas.html">Works on Canvas</a>
+          <a href="#">2025–2026</a>
+          <a href="#">2025</a>
+          <a href="#">2024</a>
+          <a href="#">2022–2023</a>
+          <a href="#">2020–2021</a>
+          <a href="#">2019</a>
+          <a href="#">2017–2018</a>
           <a href="works-on-paper.html">Works on Paper</a>
         </div>
       </div>
 
+      <!-- EXHIBITIONS -->
       <div class="nav-item">
-        <a href="exhibitions.html" class="nav-link">Exhibitions</a>
+        <button
+          class="nav-link"
+          type="button"
+          aria-expanded="false"
+        >
+          Exhibitions
+        </button>
+
         <div class="dropdown-menu">
-          <a href="exhibitions.html">Exhibitions</a>
-          <a href="#">Exhibition Archive</a>
+          <a href="#">Into the Grains (2025)</a>
+          <a href="#">Two: One, and Another (2024)</a>
+          <a href="#">Strata of the Vulnerables (2023)</a>
         </div>
       </div>
 
+      <!-- TEXTS -->
       <div class="nav-item">
-        <a href="#" class="nav-link">Texts</a>
+        <button
+          class="nav-link"
+          type="button"
+          aria-expanded="false"
+        >
+          Texts
+        </button>
+
         <div class="dropdown-menu">
-          <a href="statement.html">Artist Statement</a>
-          <a href="exhibition-review-01.html">Exhibition Review - 01</a>
-          <a href="#">Exhibition Review - 02</a>
+          <a href="statement.html">Artist's Statement</a>
+          <a href="exhibition-review-01.html">Exhibition Review -1 (2023)</a>
+          <a href="#">Exhibition Review -2 (2023)</a>
         </div>
       </div>
 
+      <!-- CV / CONTACT -->
       <div class="nav-item">
-        <a href="cv-contact.html" class="nav-link">CV & Contact</a>
+        <a
+          href="/cv-contact.html"
+          class="nav-link"
+          style="padding-bottom: 8px;"
+        >
+          CV/Contact
+        </a>
       </div>
+
     </nav>
   </header>
 
@@ -632,17 +673,89 @@
 
   <script>
     // Navigation dropdown
+    const nav = document.getElementById('main-nav');
+    const navItems = document.querySelectorAll('.nav-item');
 
-    document.querySelectorAll('.nav-item').forEach(item => {
-      const link = item.querySelector('.nav-link');
+    let activeItem = null;
+    let pinnedItem = null;
 
-      if (item.querySelector('.dropdown-menu')) {
-        link.addEventListener('click', event => {
-          if (window.innerWidth <= 768) {
-            event.preventDefault();
-            item.classList.toggle('open');
+    function closeMenus() {
+      navItems.forEach(item => {
+        item.classList.remove('is-open');
+
+        const button = item.querySelector('.nav-link');
+
+        if (button && button.tagName === 'BUTTON') {
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      activeItem = null;
+      pinnedItem = null;
+    }
+
+    function openMenu(item) {
+      navItems.forEach(menu => {
+        menu.classList.remove('is-open');
+
+        const button = menu.querySelector('.nav-link');
+
+        if (button && button.tagName === 'BUTTON') {
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (activeItem === item && !pinnedItem) {
+        activeItem = null;
+        return;
+      }
+
+      item.classList.add('is-open');
+
+      const button = item.querySelector('.nav-link');
+
+      if (button && button.tagName === 'BUTTON') {
+        button.setAttribute('aria-expanded', 'true');
+      }
+
+      activeItem = item;
+    }
+
+    navItems.forEach(item => {
+      const button = item.querySelector('button.nav-link');
+
+      item.addEventListener('mouseenter', () => {
+        if (window.matchMedia('(hover: hover)').matches) {
+          pinnedItem = null;
+          openMenu(item);
+        }
+      });
+
+      if (button) {
+        button.addEventListener('click', (event) => {
+          event.stopPropagation();
+
+          if (pinnedItem === item) {
+            closeMenus();
+          } else {
+            pinnedItem = item;
+            openMenu(item);
           }
         });
+      }
+    });
+
+    nav.addEventListener('mouseleave', () => {
+      if (pinnedItem) {
+        return;
+      }
+
+      closeMenus();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!nav.contains(event.target)) {
+        closeMenus();
       }
     });
 
