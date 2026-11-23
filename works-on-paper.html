@@ -33,6 +33,10 @@
       -webkit-font-smoothing: antialiased;
     }
 
+    body.modal-open {
+      overflow: hidden;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
@@ -133,6 +137,7 @@
     /* PAGE TITLE */
     .page-heading {
       margin-bottom: 42px;
+      text-align: center;
     }
 
     .page-title {
@@ -153,15 +158,15 @@
       width: 100%;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      justify-content: center;
+      gap: 24px;
       padding: 0 0 14px;
       border: none;
       border-bottom: 1px solid #e5e5e5;
       background: none;
       color: #333333;
       font-family: inherit;
-      text-align: left;
+      text-align: center;
       cursor: pointer;
     }
 
@@ -199,6 +204,8 @@
       display: none;
       padding: 23px 0 0;
       max-width: 850px;
+      margin: 0 auto;
+      text-align: center;
     }
 
     .about-text.is-open {
@@ -224,38 +231,74 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      gap: 55px;
+      align-items: center;
+      gap: 65px;
     }
 
     .work-item {
       width: 100%;
       margin: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    /* IMAGE */
+    .image-wrap {
+      position: relative;
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      cursor: zoom-in;
+      overflow: hidden;
     }
 
     .work-image {
       width: 100%;
+      max-height: 780px;
       display: block;
       height: auto;
       object-fit: contain;
+      transition: opacity 0.25s ease;
     }
 
-    /* IMAGE PLACEHOLDER */
-    .image-placeholder {
-      width: 100%;
-      aspect-ratio: 4 / 3;
+    /* HOVER ZOOM ICON */
+    .image-zoom-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 48px;
+      height: 48px;
       display: flex;
       align-items: center;
       justify-content: center;
-      background: #f5f5f5;
-      color: #aaaaaa;
-      font-size: 12px;
-      font-weight: 400;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      background: rgba(0, 0, 0, 0.3);
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: 27px;
+      font-weight: 300;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.25s ease;
+    }
+
+    .image-wrap:hover .image-zoom-icon {
+      opacity: 1;
+    }
+
+    .image-wrap:hover .work-image {
+      opacity: 0.88;
     }
 
     /* CAPTION */
     .work-caption {
-      padding-top: 12px;
-      text-align: left;
+      width: 100%;
+      max-width: 780px;
+      padding-top: 14px;
+      text-align: center;
     }
 
     .work-caption-title {
@@ -272,6 +315,55 @@
       font-size: 11px;
       font-weight: 400;
       line-height: 1.6;
+    }
+
+    /* IMAGE LIGHTBOX */
+    .image-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 55px 40px;
+      background: rgba(0, 0, 0, 0.96);
+    }
+
+    .image-modal.is-open {
+      display: flex;
+    }
+
+    .modal-image {
+      display: block;
+      max-width: 100%;
+      max-height: 100%;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      cursor: zoom-out;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 22px;
+      right: 30px;
+      width: 42px;
+      height: 42px;
+      padding: 0;
+      border: none;
+      background: transparent;
+      color: #ffffff;
+      font-family: Arial, sans-serif;
+      font-size: 34px;
+      font-weight: 200;
+      line-height: 1;
+      cursor: pointer;
+      opacity: 0.8;
+      transition: opacity 0.2s ease;
+    }
+
+    .modal-close:hover {
+      opacity: 1;
     }
 
     /* FOOTER */
@@ -332,7 +424,28 @@
       }
 
       .works-list {
-        gap: 42px;
+        gap: 48px;
+      }
+
+      .image-wrap {
+        max-width: 100%;
+      }
+
+      .work-image {
+        max-height: 650px;
+      }
+
+      .work-caption {
+        padding-top: 12px;
+      }
+
+      .image-modal {
+        padding: 50px 15px;
+      }
+
+      .modal-close {
+        top: 12px;
+        right: 15px;
       }
 
       footer {
@@ -367,11 +480,24 @@
       }
 
       .works-list {
-        gap: 35px;
+        gap: 38px;
       }
 
       .work-caption {
         padding-top: 10px;
+      }
+
+      .image-zoom-icon {
+        width: 40px;
+        height: 40px;
+        font-size: 23px;
+      }
+    }
+
+    /* TOUCH DEVICES */
+    @media (hover: none) {
+      .image-zoom-icon {
+        opacity: 0;
       }
     }
   </style>
@@ -503,11 +629,14 @@
 
         <!-- WORK 01 -->
         <figure class="work-item">
-          <img
-            class="work-image"
-            src="images/works-on-paper-01.jpg"
-            alt="Work on Paper 01"
-          >
+          <div class="image-wrap">
+            <img
+              class="work-image"
+              src="images/works-on-paper-01.jpg"
+              alt="Work on Paper 01"
+            >
+            <span class="image-zoom-icon">+</span>
+          </div>
 
           <figcaption class="work-caption">
             <p class="work-caption-title">Work Title</p>
@@ -517,11 +646,14 @@
 
         <!-- WORK 02 -->
         <figure class="work-item">
-          <img
-            class="work-image"
-            src="images/works-on-paper-02.jpg"
-            alt="Work on Paper 02"
-          >
+          <div class="image-wrap">
+            <img
+              class="work-image"
+              src="images/works-on-paper-02.jpg"
+              alt="Work on Paper 02"
+            >
+            <span class="image-zoom-icon">+</span>
+          </div>
 
           <figcaption class="work-caption">
             <p class="work-caption-title">Work Title</p>
@@ -531,11 +663,14 @@
 
         <!-- WORK 03 -->
         <figure class="work-item">
-          <img
-            class="work-image"
-            src="images/works-on-paper-03.jpg"
-            alt="Work on Paper 03"
-          >
+          <div class="image-wrap">
+            <img
+              class="work-image"
+              src="images/works-on-paper-03.jpg"
+              alt="Work on Paper 03"
+            >
+            <span class="image-zoom-icon">+</span>
+          </div>
 
           <figcaption class="work-caption">
             <p class="work-caption-title">Work Title</p>
@@ -547,6 +682,26 @@
 
     </section>
   </main>
+
+  <!-- IMAGE LIGHTBOX -->
+  <div
+    class="image-modal"
+    id="image-modal"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Enlarged artwork image"
+  >
+    <button
+      class="modal-close"
+      id="modal-close"
+      type="button"
+      aria-label="Close enlarged image"
+    >
+      &times;
+    </button>
+
+    <img class="modal-image" id="modal-image" src="" alt="">
+  </div>
 
   <!-- FOOTER -->
   <footer>
@@ -564,6 +719,56 @@
 
       aboutToggle.setAttribute('aria-expanded', String(!isExpanded));
       aboutText.classList.toggle('is-open', !isExpanded);
+    });
+  </script>
+
+  <!-- IMAGE ZOOM SCRIPT -->
+  <script>
+    const imageModal = document.getElementById('image-modal');
+    const modalImage = document.getElementById('modal-image');
+    const modalClose = document.getElementById('modal-close');
+    const imageWraps = document.querySelectorAll('.image-wrap');
+
+    function openImage(image) {
+      modalImage.src = image.src;
+      modalImage.alt = image.alt;
+
+      imageModal.classList.add('is-open');
+      document.body.classList.add('modal-open');
+    }
+
+    function closeImage() {
+      imageModal.classList.remove('is-open');
+      document.body.classList.remove('modal-open');
+
+      modalImage.src = '';
+    }
+
+    imageWraps.forEach(wrap => {
+      wrap.addEventListener('click', () => {
+        const image = wrap.querySelector('.work-image');
+        openImage(image);
+      });
+    });
+
+    modalClose.addEventListener('click', closeImage);
+
+    imageModal.addEventListener('click', (event) => {
+      if (
+        event.target === imageModal ||
+        event.target === modalImage
+      ) {
+        closeImage();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (
+        event.key === 'Escape' &&
+        imageModal.classList.contains('is-open')
+      ) {
+        closeImage();
+      }
     });
   </script>
 
