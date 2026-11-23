@@ -1,1 +1,529 @@
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Note - About My Drawings | Dasole Oh</title>
+
+  <!-- Wanted Sans -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.min.css"
+  >
+
+  <style>
+    /* BASIC SETTINGS */
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: #ffffff;
+      color: #222222;
+      font-family: 'Wanted Sans Variable', sans-serif;
+      font-weight: 400;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* HEADER */
+    header {
+      width: 100%;
+      padding: 22px 7% 15px;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 40px;
+    }
+
+    .site-name {
+      flex-shrink: 0;
+      font-size: 21px;
+      font-weight: 400;
+      letter-spacing: -0.5px;
+      line-height: 1.3;
+    }
+
+    /* NAVIGATION */
+    nav {
+      display: flex;
+      align-items: flex-start;
+      gap: 34px;
+    }
+
+    .nav-item {
+      position: relative;
+    }
+
+    .nav-trigger {
+      display: block;
+      padding: 3px 0 8px;
+      border: none;
+      background: none;
+      color: #555555;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .nav-trigger:hover,
+    .nav-item.is-open .nav-trigger,
+    .nav-item:focus-within .nav-trigger {
+      color: #03a890;
+    }
+
+    /* DROPDOWN */
+    .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: -12px;
+      min-width: 190px;
+      padding: 8px 12px 12px;
+      background: #ffffff;
+      z-index: 10;
+    }
+
+    .nav-item.is-open .dropdown {
+      display: block;
+    }
+
+    .dropdown a {
+      display: block;
+      padding: 7px 0;
+      color: #777777;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.5;
+      white-space: nowrap;
+      transition: color 0.2s ease;
+    }
+
+    .dropdown a:hover {
+      color: #03a890;
+    }
+
+    /* STATEMENT LAYOUT */
+    main {
+      width: 100%;
+      padding: 75px 7% 100px;
+    }
+
+    .statement-layout {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    /* TITLE */
+    .statement-heading {
+      margin-bottom: 38px;
+    }
+
+    .statement-title {
+      margin: 0;
+      color: #222222;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.4;
+      letter-spacing: -0.4px;
+    }
+
+    /* TWO COLUMNS */
+    .statement-columns {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 55px;
+      align-items: start;
+    }
+
+    .statement-content {
+      width: 100%;
+      min-width: 0;
+    }
+
+    .statement-content p {
+      margin: 0 0 28px;
+      color: #444444;
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 2.05;
+      letter-spacing: -0.15px;
+      word-break: keep-all;
+    }
+
+    .statement-content p:last-child {
+      margin-bottom: 0;
+    }
+
+    /* ENGLISH TEXT */
+    .statement-english {
+      word-break: normal;
+    }
+
+    .statement-english p {
+      word-break: normal;
+    }
+
+    /* FOOTER */
+    footer {
+      width: 100%;
+      padding: 12px 7% 18px;
+      color: #999999;
+      font-size: 11px;
+      font-weight: 400;
+    }
+
+    /* TABLET / MOBILE */
+    @media (max-width: 768px) {
+      header {
+        padding: 22px 6% 12px;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .site-name {
+        font-size: 20px;
+      }
+
+      nav {
+        width: 100%;
+        flex-wrap: wrap;
+        gap: 12px 24px;
+      }
+
+      .nav-trigger {
+        font-size: 13px;
+      }
+
+      .dropdown {
+        min-width: 170px;
+      }
+
+      main {
+        padding: 55px 6% 75px;
+      }
+
+      .statement-heading {
+        margin-bottom: 32px;
+      }
+
+      .statement-title {
+        font-size: 17px;
+      }
+
+      .statement-columns {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+
+      .statement-content {
+        max-width: 100%;
+      }
+
+      .statement-content p {
+        font-size: 14px;
+        line-height: 2;
+        margin-bottom: 25px;
+      }
+
+      .statement-english {
+        margin-top: 32px;
+      }
+
+      footer {
+        padding: 10px 6% 15px;
+      }
+    }
+
+    /* SMALL MOBILE SCREENS */
+    @media (max-width: 420px) {
+      header {
+        gap: 14px;
+      }
+
+      nav {
+        gap: 10px 18px;
+      }
+
+      .nav-trigger {
+        font-size: 12px;
+      }
+
+      main {
+        padding-top: 45px;
+      }
+
+      .statement-heading {
+        margin-bottom: 27px;
+      }
+
+      .statement-content p {
+        font-size: 14px;
+        line-height: 1.95;
+      }
+
+      .statement-english {
+        margin-top: 27px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <a href="index.html" class="site-name">
+      Dasole Oh
+    </a>
+
+    <!-- NAVIGATION -->
+    <nav id="main-nav">
+
+      <!-- WORKS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Works
+        </button>
+
+        <div class="dropdown">
+          <a href="#">2025–2026</a>
+          <a href="#">2025</a>
+          <a href="#">2024</a>
+          <a href="#">2022–2023</a>
+          <a href="#">2020–2021</a>
+          <a href="#">2019</a>
+          <a href="#">2017–2018</a>
+          <a href="#">Works on Paper</a>
+        </div>
+      </div>
+
+      <!-- EXHIBITIONS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Exhibitions
+        </button>
+
+        <div class="dropdown">
+          <a href="#">Into the Grains (2025)</a>
+          <a href="#">Two: One, and Another (2024)</a>
+          <a href="#">Strata of the Vulnerables (2023)</a>
+        </div>
+      </div>
+
+      <!-- TEXTS -->
+      <div class="nav-item">
+        <button
+          class="nav-trigger"
+          type="button"
+          aria-expanded="false"
+        >
+          Texts
+        </button>
+
+        <div class="dropdown">
+          <a href="statement.html">Artist's Statement</a>
+          <a href="note-about-my-drawings.html">Note - about my drawings</a>
+          <a href="#">Exhibition Review -1 (2023)</a>
+          <a href="#">Exhibition Review -2 (2023)</a>
+        </div>
+      </div>
+
+      <!-- CV / CONTACT -->
+      <div class="nav-item">
+        <a
+          href="/cv-contact.html"
+          class="nav-trigger"
+          style="padding-bottom: 8px;"
+        >
+          CV/Contact
+        </a>
+      </div>
+
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <section class="statement-layout">
+
+      <!-- TITLE -->
+      <div class="statement-heading">
+        <h1 class="statement-title">내 드로잉에 대하여 About My Drawings</h1>
+      </div>
+
+      <!-- KOREAN / ENGLISH COLUMNS -->
+      <div class="statement-columns">
+
+        <!-- KOREAN -->
+        <div class="statement-content statement-korean" lang="ko">
+
+          <p>
+            나의 프리핸드 드로잉 소품들은 종이에 펜이나 수채화 등 간단한 도구를 사용해 단시간 내에 완성한 것이다. 완전한 무(無)에서 시작하기보다, 공간이나 건축의 이미지를 보고 즉각 추상화(-化) 하는 방식으로 그려진다. 캔버스 작업과 마찬가지로 드로잉 또한 구상으로부터 추상을 여과해내는 과정이란 점에서 두 작업은 같은 맥락에 있다.
+          </p>
+
+          <p>
+            같은 그리기 작업이면서도 서로 다른 근육을 활성화한다는 점에서 캔버스 작업은 ‘산문’, 드로잉 작업은 ‘시’와 비슷하다고 느낀다. 캔버스 작업에는 구조를 한 층씩 더 깊게 만들어가기 위한 지구력이 필요하다면, 드로잉 작업에는 그림 스스로 돌발적 사건처럼 나타나면서 형성해가는 에너지에 동화하기 위한 순발력과 깨어있음이 요구된다.
+          </p>
+
+          <p>
+            드로잉을 할 때에는 공간/건축 이미지가 가진 분명한 형상들의 흐름을 따라 왜곡, 생략, 단순화 등 순간적으로 집중된 감각을 동원해 즉각적으로 추상화하고, 간결한 선과 붓터치로 빠르게 그려낸다. 밑그림 없이 시작하여 단숨에 끝난다는 점, 그리고 잘못 그린 부분을 수정할 수 없다는 점은 강도 높은 집중력을 개입시킨다. 한점 한점의 드로잉에서 선들의 속도, 무게, 방향, 떨림, 조화, 관계에 온전히 집중하면서 움직임과 흐름을 발견하고 그것을 따라 선과 면을 그려간다.
+          </p>
+
+          <p>
+            그렇게 매일 한 번에 수십장의 드로잉을 그려내고 나면 어떤 날은 마음에 드는 작품이 한 점도 없고 또 어떤 날은 한두 점의 작품을 겨우 얻는다. 매번 이토록 단순한 것이 이토록 어렵고도 값지다.
+          </p>
+
+          <p>
+            - 오다솔
+          </p>
+
+        </div>
+
+        <!-- ENGLISH -->
+        <div class="statement-content statement-english" lang="en">
+
+          <p>
+            My freehand drawing pieces are created with simple tools, such as pen or watercolor on paper, and completed in a short time. Rather than starting from nothing, they are drawn by referencing images of spaces or architecture and immediately abstracting them. The drawing work shares a similar context with my canvas work, as both involve filtering abstraction from figuration.
+          </p>
+
+          <p>
+            Although both are forms of picture-making, they engage different muscles. I find that canvas work is like ‘prose’, while drawing resembles ‘poetry’. Canvas work requires endurance to deepen the structure layer by layer, whereas drawing demands agility and alertness to align with the energy that arises as the drawing itself emerges like an unforeseen event.
+          </p>
+
+          <p>
+            When drawing, I quickly abstract the rigid forms of architectural structures, following their flow through distortion, omission, or simplification with intense, momentary focus. I work swiftly, using simple lines and brushstrokes. Having no preliminary sketches and no option to correct mistakes demands a high level of concentration. In each drawing, I focus on the speed, weight, direction, vibration, harmony, and relationship of the lines, as I discover and follow their movement and flow.
+          </p>
+
+          <p>
+            Each day, I draw dozens of pieces; some days, I end up with no satisfactory piece, while on others, I might achieve only one or two. I am reminded each time how challenging and rewarding something so seemingly simple can be.
+          </p>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Dasole Oh. All rights reserved.
+  </footer>
+
+  <!-- NAVIGATION SCRIPT -->
+  <script>
+    const nav = document.getElementById('main-nav');
+    const navItems = document.querySelectorAll('.nav-item');
+
+    let activeItem = null;
+    let pinnedItem = null;
+
+    function closeMenus() {
+      navItems.forEach(item => {
+        item.classList.remove('is-open');
+
+        const button = item.querySelector('.nav-trigger');
+
+        if (button && button.tagName === 'BUTTON') {
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      activeItem = null;
+      pinnedItem = null;
+    }
+
+    function openMenu(item) {
+      navItems.forEach(menu => {
+        menu.classList.remove('is-open');
+
+        const button = menu.querySelector('.nav-trigger');
+
+        if (button && button.tagName === 'BUTTON') {
+          button.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (activeItem === item && !pinnedItem) {
+        activeItem = null;
+        return;
+      }
+
+      item.classList.add('is-open');
+
+      const button = item.querySelector('.nav-trigger');
+
+      if (button && button.tagName === 'BUTTON') {
+        button.setAttribute('aria-expanded', 'true');
+      }
+
+      activeItem = item;
+    }
+
+    navItems.forEach(item => {
+      const button = item.querySelector('button.nav-trigger');
+
+      item.addEventListener('mouseenter', () => {
+        if (window.matchMedia('(hover: hover)').matches) {
+          pinnedItem = null;
+          openMenu(item);
+        }
+      });
+
+      if (button) {
+        button.addEventListener('click', (event) => {
+          event.stopPropagation();
+
+          if (pinnedItem === item) {
+            closeMenus();
+          } else {
+            pinnedItem = item;
+            openMenu(item);
+          }
+        });
+      }
+    });
+
+    nav.addEventListener('mouseleave', () => {
+      if (pinnedItem) {
+        return;
+      }
+
+      closeMenus();
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!nav.contains(event.target)) {
+        closeMenus();
+      }
+    });
+  </script>
+
+</body>
+</html>
+
