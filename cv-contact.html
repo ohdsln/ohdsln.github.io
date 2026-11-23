@@ -183,27 +183,17 @@
       stroke-linejoin: round;
     }
 
-    /* BILINGUAL CV LAYOUT */
-    .cv-bilingual {
+    /* CV COLUMNS */
+    .cv-columns {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      column-gap: 50px;
+      column-gap: 55px;
       align-items: start;
     }
 
     .cv-language {
       width: 100%;
       min-width: 0;
-    }
-
-    /* DESKTOP VERTICAL DIVIDER */
-    .cv-language:first-child {
-      padding-right: 25px;
-      border-right: 1px solid #e5e5e5;
-    }
-
-    .cv-language:last-child {
-      padding-left: 25px;
     }
 
     .cv-section {
@@ -233,21 +223,11 @@
 
     .cv-detail {
       color: #333333;
-      min-width: 0;
     }
 
     .cv-venue {
       color: #777777;
       font-size: 13px;
-    }
-
-    /* MOBILE HORIZONTAL DIVIDER */
-    .language-divider {
-      display: none;
-      width: 100%;
-      height: 1px;
-      margin: 45px 0;
-      background: #e5e5e5;
     }
 
     /* FOOTER */
@@ -299,22 +279,10 @@
         margin-bottom: 40px;
       }
 
-      /* STACK KOREAN AND ENGLISH */
-      .cv-bilingual {
-        display: block;
-      }
-
-      .cv-language:first-child {
-        padding-right: 0;
-        border-right: none;
-      }
-
-      .cv-language:last-child {
-        padding-left: 0;
-      }
-
-      .language-divider {
-        display: block;
+      /* Korean / English CV stacked vertically */
+      .cv-columns {
+        grid-template-columns: 1fr;
+        row-gap: 0;
       }
 
       .cv-section {
@@ -395,10 +363,6 @@
 
       .cv-venue {
         font-size: 11.5px;
-      }
-
-      .language-divider {
-        margin: 38px 0;
       }
     }
   </style>
@@ -501,8 +465,8 @@
       </div>
 
 
-      <!-- BILINGUAL CV: TWO COLUMNS ON DESKTOP -->
-      <div class="cv-bilingual">
+      <!-- CV COLUMNS -->
+      <div class="cv-columns">
 
         <!-- KOREAN CV -->
         <section class="cv-language">
@@ -752,10 +716,6 @@
           </section>
 
         </section>
-
-
-        <!-- DIVIDER: MOBILE ONLY -->
-        <div class="language-divider"></div>
 
 
         <!-- ENGLISH CV -->
