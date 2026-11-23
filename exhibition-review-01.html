@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Exhibition Review - Dasole Oh</title>
+  <title>구조와 제스처: 오다솔의 회화적 번안과 (재)구성된 세계 - Dasole Oh</title>
 
   <link rel="stylesheet" as="style" crossorigin
     href="https://cdn.jsdelivr.net/gh/fonts-archive/WantedSans/WantedSans.css">
@@ -117,61 +118,51 @@
     }
 
     .review-heading {
-      margin-bottom: 38px;
+      margin-bottom: 30px;
     }
 
     .review-page-title {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      margin: 0;
+      margin: 0 0 12px;
       color: #222222;
-      font-size: 17px;
+      font-size: 22px;
       font-weight: 400;
-      line-height: 1.4;
-      letter-spacing: -0.4px;
+      line-height: 1.65;
+      letter-spacing: -0.5px;
+      word-break: keep-all;
     }
 
-    .title-divider {
-      display: inline-block;
-      width: 1px;
-      height: 19px;
-      background: #cccccc;
-      flex-shrink: 0;
+    .review-subtitle {
+      margin: 0;
+      color: #777777;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 1.6;
     }
 
     /* LANGUAGE SELECTOR */
 
     .language-selector {
       display: flex;
-      gap: 8px;
+      align-items: center;
+      gap: 18px;
       margin-bottom: 35px;
     }
 
     .language-button {
-      min-width: 65px;
-      padding: 8px 16px;
-      border: 1px solid #dddddd;
-      border-radius: 0;
-      background: #ffffff;
-      color: #777777;
+      padding: 0;
+      border: none;
+      background: none;
+      color: #999999;
       font-family: inherit;
       font-size: 13px;
       font-weight: 400;
       cursor: pointer;
-      transition: color 0.15s ease, border-color 0.15s ease,
-                  background 0.15s ease;
+      transition: color 0.15s ease;
     }
 
-    .language-button:hover {
-      border-color: #999999;
-      color: #222222;
-    }
-
+    .language-button:hover,
     .language-button.active {
-      border-color: #222222;
-      background: #222222;
-      color: #ffffff;
+      color: #03a890;
     }
 
     /* REVIEW CONTENT */
@@ -191,27 +182,9 @@
       border-bottom: 1px solid #e5e5e5;
     }
 
-    .review-title {
-      margin: 0 0 14px;
-      color: #222222;
-      font-size: 22px;
-      font-weight: 400;
-      line-height: 1.65;
-      letter-spacing: -0.5px;
-      word-break: keep-all;
-    }
-
     .review-exhibition {
-      margin: 0 0 5px;
+      margin: 0 0 16px;
       color: #555555;
-      font-size: 14px;
-      line-height: 1.8;
-      word-break: keep-all;
-    }
-
-    .review-venue {
-      margin: 0 0 20px;
-      color: #777777;
       font-size: 14px;
       line-height: 1.8;
       word-break: keep-all;
@@ -249,13 +222,100 @@
       word-break: normal;
     }
 
-    .review-footnote {
-      margin-top: 38px !important;
-      padding-top: 20px;
-      border-top: 1px solid #e5e5e5;
-      color: #777777 !important;
+    /* FOOTNOTE POPUP */
+
+    .footnote-trigger {
+      display: inline;
+      position: relative;
+      padding: 0;
+      margin: 0 1px;
+      border: none;
+      background: none;
+      color: #03a890;
+      font-family: inherit;
+      font-size: 0.75em;
+      font-weight: 500;
+      line-height: inherit;
+      vertical-align: super;
+      cursor: pointer;
+    }
+
+    .footnote-trigger:hover {
+      color: #027f6d;
+    }
+
+    .footnote-popup {
+      display: none;
+      position: absolute;
+      z-index: 5;
+      left: 0;
+      top: calc(100% + 10px);
+      width: 340px;
+      max-width: min(340px, 80vw);
+      padding: 20px 22px;
+      background: #ffffff;
+      border: 1px solid #dddddd;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+      color: #555555;
+      font-size: 13px;
+      font-weight: 400;
+      line-height: 1.9;
+      letter-spacing: 0;
+      text-align: left;
+      vertical-align: baseline;
+      white-space: normal;
+      word-break: keep-all;
+    }
+
+    .footnote-popup.is-open {
+      display: block;
+    }
+
+    .footnote-popup-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+
+    .footnote-label {
+      color: #999999;
+      font-size: 11px;
+      letter-spacing: 0.2px;
+    }
+
+    .footnote-close {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 22px;
+      height: 22px;
+      padding: 0;
+      border: none;
+      background: none;
+      color: #999999;
+      font-family: inherit;
+      font-size: 19px;
+      font-weight: 300;
+      line-height: 1;
+      cursor: pointer;
+    }
+
+    .footnote-close:hover {
+      color: #03a890;
+    }
+
+    .footnote-text {
+      margin: 0 !important;
+      color: #555555 !important;
       font-size: 13px !important;
       line-height: 1.9 !important;
+      letter-spacing: 0 !important;
+      word-break: keep-all;
+    }
+
+    .review-english .footnote-text {
+      word-break: normal;
     }
 
     /* FOOTER */
@@ -300,11 +360,16 @@
       }
 
       .review-heading {
-        margin-bottom: 32px;
+        margin-bottom: 27px;
       }
 
       .review-page-title {
-        font-size: 17px;
+        font-size: 20px;
+        line-height: 1.6;
+      }
+
+      .review-subtitle {
+        font-size: 13px;
       }
 
       .language-selector {
@@ -316,13 +381,7 @@
         padding-bottom: 25px;
       }
 
-      .review-title {
-        font-size: 19px;
-        line-height: 1.65;
-      }
-
-      .review-exhibition,
-      .review-venue {
+      .review-exhibition {
         font-size: 13px;
       }
 
@@ -336,7 +395,23 @@
         margin-bottom: 25px;
       }
 
-      .review-footnote {
+      .footnote-popup {
+        position: relative;
+        display: none;
+        left: auto;
+        top: auto;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 12px;
+        padding: 17px 18px;
+        box-shadow: 0 3px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .footnote-popup.is-open {
+        display: block;
+      }
+
+      .footnote-text {
         font-size: 12px !important;
       }
 
@@ -363,15 +438,15 @@
       }
 
       .review-heading {
-        margin-bottom: 27px;
+        margin-bottom: 25px;
+      }
+
+      .review-page-title {
+        font-size: 19px;
       }
 
       .language-selector {
         margin-bottom: 27px;
-      }
-
-      .review-title {
-        font-size: 18px;
       }
 
       .review-body p {
@@ -446,12 +521,14 @@
   <main>
     <div class="review-layout">
 
+      <!-- PAGE HEADING -->
       <div class="review-heading">
-        <h1 class="review-page-title">
-          <span>전시 리뷰</span>
-          <span class="title-divider"></span>
-          <span>Exhibition Review</span>
+        <h1 class="review-page-title" id="review-page-title">
+          구조와 제스처: 오다솔의 회화적 번안과 (재)구성된 세계
         </h1>
+        <p class="review-subtitle" id="review-subtitle">
+          전시 리뷰
+        </p>
       </div>
 
 
@@ -479,16 +556,8 @@
       <section class="language-content review-korean active" id="content-ko" lang="ko">
 
         <div class="review-info">
-          <h2 class="review-title">
-            구조와 제스처: 오다솔의 회화적 번안과 (재)구성된 세계
-          </h2>
-
           <p class="review-exhibition">
-            2023 개인전 《연약한 것들의 지층》
-          </p>
-
-          <p class="review-venue">
-            배다리 잇다스페이스 작은미술관, 인천
+            2023 개인전 《연약한 것들의 지층》 (배다리 잇다스페이스 작은미술관, 인천)
           </p>
 
           <p class="review-author">
@@ -499,7 +568,7 @@
         <div class="review-body">
 
           <p>
-            오다솔 작가의 전시장에서 가장 먼저 눈에 들어온 것은 왼손으로 그린 그림 혹은 아이의 낙서 같이도 보이는, 단색의 펜 드로잉이었다. 복잡하고도 치밀한 구성으로 완성된 회화 작업 &lt;Montage&gt; 연작 사이 단출하면서도 직관적인 이 그림은 작가가 2016년경부터 지속해 온 “프리핸드 드로잉”이다. ‘프리핸드'라는 명칭에서 유추 가능하듯 오다솔의 회화에서 원재료가 되는 건축 형상물의 레퍼런스 이미지를 2~3분이라는 짧은 시간 안에 그려낸 결과물이다. 으레 시간과 에너지를 쏟아 구축하는 회화적 화면과 비견하자면 즉흥성이 두드러지지만 그렇다고 정형성이 완전히 배제되지는 않은 제스처의 발현이라 하겠다. 언제나 레퍼런스가 존재하는 그의 작업이지만 원본성은 그리 중요치 않다. 그저 작업의 출발점으로 기능할 뿐이다. 외려 본래의 이미지를 변환하는 것에 집중한다. 그사이 탈각되는 구체성은 뒤로 한 채. 순간적 감각에 기반해 빠르게 형상의 구조를 옮기며 (혹은 무너뜨리며) 모종의 추상-화(-化)를 이루어 내는 프리핸드 드로잉은 차후 회화에 일부 편입되기도, 때로는 그 자체로서 독립적으로 존재하기도 한다. 다층적이면서도 즉각적인 선들이 회화 안에서 모습을 드러내는 경우 이는 순서와 계획하에 구조를 이루는 그의 건축-디자인적 회화의 완결성을 일정 정도 무마하는 동시에 긴장을 풀어줌으로써 균형을 맞추는 요소로 기능하게 된다. 구축된 화면 안에서 목격되는 비-구축적 제스쳐로서 프리핸드 드로잉과 재현의 흔적들은 보는 이로 하여금 한편으로 어떤 서사의 가능성을 상상케 하기도 하지만, 작가는 이에 대해 서사와 연결되는 것은 아니라 단언한다. 그는 오직 레이어가 만드는 “회화적 공간"에만 관심이 있을 뿐이다. 그렇다면 그가 구성하고자 하는 회화적 공간은 어떠한 과정을 거쳐 구축되고 왜 그렇게 구축되어야만 했는지 차근히 살펴보도록 하자.
+            오다솔 작가의 전시장에서 가장 먼저 눈에 들어온 것은 왼손으로 그린 그림 혹은 아이의 낙서 같이도 보이는, 단색의 펜 드로잉이었다. 복잡하고도 치밀한 구성으로 완성된 회화 작업 &lt;Montage&gt; 연작 사이 단출하면서도 직관적인 이 그림은 작가가 2016년경부터 지속해 온 “프리핸드 드로잉”이다. ‘프리핸드'라는 명칭에서 유추 가능하듯 오다솔의 회화에서 원재료가 되는 건축 형상물의 레퍼런스 이미지를 2~3분이라는 짧은 시간 안에 그려낸 결과물이다. 으레 시간과 에너지를 쏟아 구축하는 회화적 화면과 비견하자면 즉흥성이 두드러지지만 그렇다고 정형성이 완전히 배제되지는 않은 제스처의 발현이라 하겠다. 언제나 레퍼런스가 존재하는 그의 작업이지만 원본성은 그리 중요치 않다. 그저 작업의 출발점으로 기능할 뿐이다. 외려 본래의 이미지를 변환하는 것에 집중한다. 그사이 탈각되는 구체성은 뒤로 한 채. 순간적 감각에 기반해 빠르게 형상의 구조를 옮기며 (혹은 무너뜨리며) 모종의 추상-화(-化)를 이루어 내는 프리핸드 드로잉은 차후 회화에 일부 편입되기도, 때로는 그 자체로서 독립적으로 존재하기도 한다. 다층적이면서도 즉각적인 선들이 회화 안에서 모습을 드러내는 경우 이는 순서와 계획하에 구조를 이루는 그의 건축-디자인적 회화의 완결성을 일정 정도 무마하는 동시에 긴장을 풀어줌으로써 균형을 맞추는 요소로 기능하게 된다. 구축된 화면 안에서 목격되는 비-구축적 제스쳐로서 프리핸드 드로잉과 재현의 흔적들은 보는 이로 하여금 한편으로 어떤 서사의 가능성을 상상케 하기도 하지만, 작가는 이에 대해 서사와 연결되는 것은 아니라 단언한다.<button class="footnote-trigger" type="button" aria-label="주석 1 보기" aria-expanded="false">[1]</button><span class="footnote-popup" role="note"><span class="footnote-popup-header"><span class="footnote-label">NOTE 1</span><button class="footnote-close" type="button" aria-label="주석 닫기">×</button></span><span class="footnote-text">서사보다는 구조가 선행하는 세계에 대한 작가적 태도는 작품 제목을 짓는 방식을 통해서도 확인 가능한데, 현재까지 그의 작품 제목은 모두 “Montage-일련번호”로 구성된다. 연도-숫자 순이라는 규칙하에 일종의 코드와 같이 부여된 일련번호이다. 작업에 따라붙을 수 있는 일체의 서사성을 배제하려는 시도라 하겠다.</span></span> 그는 오직 레이어가 만드는 “회화적 공간"에만 관심이 있을 뿐이다. 그렇다면 그가 구성하고자 하는 회화적 공간은 어떠한 과정을 거쳐 구축되고 왜 그렇게 구축되어야만 했는지 차근히 살펴보도록 하자.
           </p>
 
           <p>
@@ -526,16 +595,8 @@
       <section class="language-content review-english" id="content-en" lang="en">
 
         <div class="review-info">
-          <h2 class="review-title">
-            Structure and Gesture: Dasole Oh's Painterly Variation and (Re)constructed World
-          </h2>
-
           <p class="review-exhibition">
-            2023 Strata of the Vulnerables
-          </p>
-
-          <p class="review-venue">
-            Baedari Itta Space, Incheon, Korea
+            2023 Strata of the Vulnerables (Baedari Itta Space, Incheon, Korea)
           </p>
 
           <p class="review-author">
@@ -546,7 +607,7 @@
         <div class="review-body">
 
           <p>
-            The first thing that caught my eye in Dasole Oh's exhibition were monochromatic pen drawings that resembled left-hand-drawn pictures or a child's doodles. Amidst a series of intricate and complex paintings titled “Montage”, these drawings stood out with their concise yet intuitive style. They are the result of her ongoing practice of "freehand drawing" since around 2016. As the term ‘freehand’ implies, these drawings, which are rapid interpretations of architectural images, are completed within a brief timeframe of 2 to 3 minutes. (The architectural images themselves also serve as references for her paintings.) In contrast to her paintings, which generally require time and energy to construct, the drawings emanate spontaneity while simultaneously showcasing gestures that do not entirely abandon a sense of form. Although Dasole Oh’s works always have references, she does not place significant importance on their originality. Rather, they only function as a springboard for the artistic process, enabling her to concentrate on the transformation of the original images, while allowing concreteness to diminish. In Dasole Oh’s freehand drawings, she employs artistic intuition to swiftly transfer (or deconstruct) the form of structure, resulting in a certain level of abstraction. They are either later partially integrated into her paintings or maintained as standalone pieces. When these immediate and multilayered lines manifest within paintings, the drawings serve as elements that achieve a balance by lessening the sense of completeness and relieving tension within the architectural-design-like painting that is meticulously constructed by deliberate procedures and strategies. The freehand drawings, as the non-constructive gestures witnessed within the constructive composition, combined with traces of representation, evoke a sense of potential narratives. However, Dasole Oh firmly asserts that they are not directly associated with any narrative.[1] Rather, she is solely interested in the "painterly space" created by layers. Now let us closely examine what process this painterly space she intends to construct undergo and why they are built in such ways.
+            The first thing that caught my eye in Dasole Oh's exhibition were monochromatic pen drawings that resembled left-hand-drawn pictures or a child's doodles. Amidst a series of intricate and complex paintings titled “Montage”, these drawings stood out with their concise yet intuitive style. They are the result of her ongoing practice of "freehand drawing" since around 2016. As the term ‘freehand’ implies, these drawings, which are rapid interpretations of architectural images, are completed within a brief timeframe of 2 to 3 minutes. (The architectural images themselves also serve as references for her paintings.) In contrast to her paintings, which generally require time and energy to construct, the drawings emanate spontaneity while simultaneously showcasing gestures that do not entirely abandon a sense of form. Although Dasole Oh’s works always have references, she does not place significant importance on their originality. Rather, they only function as a springboard for the artistic process, enabling her to concentrate on the transformation of the original images, while allowing concreteness to diminish. In Dasole Oh’s freehand drawings, she employs artistic intuition to swiftly transfer (or deconstruct) the form of structure, resulting in a certain level of abstraction. They are either later partially integrated into her paintings or maintained as standalone pieces. When these immediate and multilayered lines manifest within paintings, the drawings serve as elements that achieve a balance by lessening the sense of completeness and relieving tension within the architectural-design-like painting that is meticulously constructed by deliberate procedures and strategies. The freehand drawings, as the non-constructive gestures witnessed within the constructive composition, combined with traces of representation, evoke a sense of potential narratives. However, Dasole Oh firmly asserts that they are not directly associated with any narrative.<button class="footnote-trigger" type="button" aria-label="View footnote 1" aria-expanded="false">[1]</button><span class="footnote-popup" role="note"><span class="footnote-popup-header"><span class="footnote-label">NOTE 1</span><button class="footnote-close" type="button" aria-label="Close footnote">×</button></span><span class="footnote-text">Dasole Oh’s attitude toward a world where structure precedes narrative can be observed also through the way titles are given to her artworks. So far, all of her artwork titles are composed of "Montage-serial number”, following a rule of year-number sequence, resembling a code assigned to them. This can be seen as an attempt to exclude any cohesive narrative that could be associated with the works.</span></span> Rather, she is solely interested in the "painterly space" created by layers. Now let us closely examine what process this painterly space she intends to construct undergo and why they are built in such ways.
           </p>
 
           <p>
@@ -563,10 +624,6 @@
 
           <p>
             Now, let's refocus on her freehand drawings. The interest in the period before ‘the earliest memory’ and the experiential facts exist. However, Dasole Oh's artwork, similar to memories that have been reassembled and overlaid onto a blurred original form over time, exists as a formal abstraction, leaving its substance behind. In the face of this fact, her freehand drawings become inherently clear in themselves. In the beginning of the text, I mentioned them as "likely to be drawn by a left hand or a child”. It is not merely about being poor or rough; it is an analogy to a part or period that has been transformed from its original state while still existing within oneself. And that becomes a reason to pay attention to Dasole Oh’s freehand drawings as both an entrance and an exit to her creative sphere.
-          </p>
-
-          <p class="review-footnote">
-            [1] Dasole Oh’s attitude toward a world where structure precedes narrative can be observed also through the way titles are given to her artworks. So far, all of her artwork titles are composed of "Montage-serial number”, following a rule of year-number sequence, resembling a code assigned to them. This can be seen as an attempt to exclude any cohesive narrative that could be associated with the works.
           </p>
 
         </div>
@@ -674,6 +731,18 @@
 
     const languageButtons = document.querySelectorAll('.language-button');
     const languageContents = document.querySelectorAll('.language-content');
+    const pageTitle = document.getElementById('review-page-title');
+    const pageSubtitle = document.getElementById('review-subtitle');
+
+    const pageTitles = {
+      ko: '구조와 제스처: 오다솔의 회화적 번안과 (재)구성된 세계',
+      en: "Structure and Gesture: Dasole Oh's Painterly Variation and (Re)constructed World"
+    };
+
+    const pageSubtitles = {
+      ko: '전시 리뷰',
+      en: 'Exhibition Review'
+    };
 
     languageButtons.forEach(button => {
       button.addEventListener('click', () => {
@@ -693,8 +762,71 @@
           );
         });
 
+        pageTitle.textContent = pageTitles[selectedLanguage];
+        pageSubtitle.textContent = pageSubtitles[selectedLanguage];
         document.documentElement.lang = selectedLanguage;
+
+        closeAllFootnotes();
       });
+    });
+
+
+    /* FOOTNOTE POPUPS */
+
+    const footnoteTriggers = document.querySelectorAll('.footnote-trigger');
+
+    function closeAllFootnotes() {
+      document.querySelectorAll('.footnote-popup').forEach(popup => {
+        popup.classList.remove('is-open');
+      });
+
+      document.querySelectorAll('.footnote-trigger').forEach(trigger => {
+        trigger.setAttribute('aria-expanded', 'false');
+      });
+    }
+
+    footnoteTriggers.forEach(trigger => {
+      trigger.addEventListener('click', (event) => {
+        event.stopPropagation();
+
+        const popup = trigger.nextElementSibling;
+        const isAlreadyOpen = popup.classList.contains('is-open');
+
+        closeAllFootnotes();
+
+        if (!isAlreadyOpen) {
+          popup.classList.add('is-open');
+          trigger.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    document.querySelectorAll('.footnote-close').forEach(button => {
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+
+        const popup = button.closest('.footnote-popup');
+        const trigger = popup.previousElementSibling;
+
+        popup.classList.remove('is-open');
+
+        if (trigger) {
+          trigger.setAttribute('aria-expanded', 'false');
+        }
+      });
+    });
+
+    document.addEventListener('click', (event) => {
+      if (!event.target.closest('.footnote-popup') &&
+          !event.target.closest('.footnote-trigger')) {
+        closeAllFootnotes();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        closeAllFootnotes();
+      }
     });
   </script>
 
