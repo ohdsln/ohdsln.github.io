@@ -136,12 +136,28 @@
     }
 
     .statement-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
       margin: 0;
       color: #222222;
       font-size: 17px;
       font-weight: 400;
       line-height: 1.4;
       letter-spacing: -0.4px;
+    }
+
+    .title-divider {
+      display: inline-block;
+      width: 1px;
+      height: 19px;
+      background: #cccccc;
+      flex-shrink: 0;
+    }
+
+    .title-korean,
+    .title-english {
+      display: inline-block;
     }
 
     /* TWO COLUMNS */
@@ -225,6 +241,10 @@
 
       .statement-title {
         font-size: 17px;
+      }
+
+      .title-divider {
+        height: 19px;
       }
 
       .statement-columns {
@@ -357,12 +377,12 @@
       <!-- CV / CONTACT -->
       <div class="nav-item">
         <a
-  href="/cv-contact.html"
-  class="nav-trigger"
-  style="padding-bottom: 8px;"
->
-  CV/Contact
-</a>
+          href="/cv-contact.html"
+          class="nav-trigger"
+          style="padding-bottom: 8px;"
+        >
+          CV/Contact
+        </a>
       </div>
 
     </nav>
@@ -374,7 +394,11 @@
 
       <!-- TITLE -->
       <div class="statement-heading">
-        <h1 class="statement-title">Artist's Statement</h1>
+        <h1 class="statement-title">
+          <span class="title-korean">작가노트</span>
+          <span class="title-divider"></span>
+          <span class="title-english">Artist's Statement</span>
+        </h1>
       </div>
 
       <!-- KOREAN / ENGLISH COLUMNS -->
