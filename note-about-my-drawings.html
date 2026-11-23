@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -135,12 +136,28 @@
     }
 
     .statement-title {
+      display: flex;
+      align-items: center;
+      gap: 16px;
       margin: 0;
       color: #222222;
       font-size: 17px;
       font-weight: 400;
       line-height: 1.4;
       letter-spacing: -0.4px;
+    }
+
+    .title-divider {
+      display: inline-block;
+      width: 1px;
+      height: 19px;
+      background: #cccccc;
+      flex-shrink: 0;
+    }
+
+    .title-korean,
+    .title-english {
+      display: inline-block;
     }
 
     /* TWO COLUMNS */
@@ -224,6 +241,10 @@
 
       .statement-title {
         font-size: 17px;
+      }
+
+      .title-divider {
+        height: 19px;
       }
 
       .statement-columns {
@@ -373,7 +394,11 @@
 
       <!-- TITLE -->
       <div class="statement-heading">
-        <h1 class="statement-title">내 드로잉에 대하여 About My Drawings</h1>
+        <h1 class="statement-title">
+          <span class="title-korean">내 드로잉에 대하여</span>
+          <span class="title-divider"></span>
+          <span class="title-english">About My Drawings</span>
+        </h1>
       </div>
 
       <!-- KOREAN / ENGLISH COLUMNS -->
@@ -521,4 +546,3 @@
 
 </body>
 </html>
-
