@@ -216,8 +216,37 @@
       display: block;
     }
 
+    /* LANGUAGE SWITCH */
+    .language-switch {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 17px;
+    }
+
+    .language-button {
+      padding: 0;
+      border: none;
+      background: none;
+      color: #999999;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .language-button:hover,
+    .language-button.is-active {
+      color: #03a890;
+    }
+
+    .language-button.is-active {
+      font-weight: 500;
+    }
+
     .about-text p {
-      margin: 0 0 20px;
+      margin: 0;
       color: #555555;
       font-size: 14px;
       font-weight: 400;
@@ -226,8 +255,12 @@
       word-break: keep-all;
     }
 
-    .about-text p:last-child {
-      margin-bottom: 0;
+    .about-english p {
+      word-break: normal;
+    }
+
+    [hidden] {
+      display: none !important;
     }
 
     /* WORKS LIST */
@@ -425,7 +458,10 @@
       .about-text p {
         font-size: 14px;
         line-height: 1.95;
-        margin-bottom: 18px;
+      }
+
+      .language-switch {
+        margin-bottom: 15px;
       }
 
       .works-list {
@@ -495,6 +531,20 @@
 
       .about-toggle-label {
         font-size: 11px;
+      }
+
+      .language-switch {
+        gap: 14px;
+        margin-bottom: 13px;
+      }
+
+      .language-button {
+        font-size: 11px;
+      }
+
+      .about-text p {
+        font-size: 13px;
+        line-height: 1.9;
       }
 
       .works-list {
@@ -631,13 +681,40 @@
 
         <div class="about-text" id="about-text">
 
-          <p>
-            나의 프리핸드 드로잉은 종이 위에 펜이나 수채 같은 간단한 도구로 짧은 시간 안에 완성된다. 완전한 무(無)에서 시작하기보다 공간과 건축의 이미지를 보고 곧바로 추상화한다. 구상에서 추상을 여과해내는 과정이라는 점에서 캔버스 작업과 같은 맥락에 놓여 있지만, 캔버스 작업이 산문이라면 드로잉은 시에 가깝다. 캔버스 작업은 구조를 한 층씩 깊게 쌓아가는 지구력을 요구하는 반면, 드로잉은 그림이 돌발적인 사건처럼 스스로 나타나는 순간에 동화되기 위한 순발력과 깨어있음을 요구하기 때문이다.
-          </p>
+          <!-- LANGUAGE SWITCH -->
+          <div class="language-switch">
+            <button
+              class="language-button is-active"
+              id="language-ko"
+              type="button"
+              aria-pressed="true"
+            >
+              한국어
+            </button>
 
-          <p>
-            밑그림 없이 시작하고, 잘못된 선은 고칠 수 없으며, 모든 것은 단숨에 끝나는 드로잉 과정 안에서 나는 선의 속도와 무게, 방향과 떨림에 집중하며 움직임을 발견하고 그것을 따라간다. 그렇게 매일 수십 장을 그려도 겨우 한두 점을 건진다. 이토록 단순한 것이 이토록 어렵고도 값지다.
-          </p>
+            <button
+              class="language-button"
+              id="language-en"
+              type="button"
+              aria-pressed="false"
+            >
+              English
+            </button>
+          </div>
+
+          <!-- KOREAN -->
+          <div class="about-korean" id="about-korean">
+            <p lang="ko">
+              나의 프리핸드 드로잉은 종이 위에 펜이나 수채 같은 간단한 도구로 짧은 시간 안에 완성된다. 완전한 무(無)에서 시작하기보다 공간과 건축의 이미지를 보고 곧바로 추상화한다. 구상에서 추상을 여과해내는 과정이라는 점에서 캔버스 작업과 같은 맥락에 놓여 있지만, 캔버스 작업이 산문이라면 드로잉은 시에 가깝다. 캔버스 작업은 구조를 한 층씩 깊게 쌓아가는 지구력을 요구하는 반면, 드로잉은 그림이 돌발적인 사건처럼 스스로 나타나는 순간에 동화되기 위한 순발력과 깨어있음을 요구하기 때문이다. 밑그림 없이 시작하고, 잘못된 선은 고칠 수 없으며, 모든 것은 단숨에 끝나는 드로잉 과정 안에서 나는 선의 속도와 무게, 방향과 떨림에 집중하며 움직임을 발견하고 그것을 따라간다. 그렇게 매일 수십 장을 그려도 겨우 한두 점을 건진다. 이토록 단순한 것이 이토록 어렵고도 값지다.
+            </p>
+          </div>
+
+          <!-- ENGLISH -->
+          <div class="about-english" id="about-english" hidden>
+            <p lang="en">
+              My freehand drawings are made on paper, using simple tools such as pen or watercolor, and completed in a short span of time. Rather than beginning from nothing, I look at images of spaces and architecture and abstract them directly. In this sense, the drawings share ground with my canvas work: both filter abstraction out of figurative sources. But if my paintings are like prose, my drawings are closer to poetry. The paintings require the endurance to build up a structure, layer by layer. The drawings call for quickness and alertness, to be in tune with the moment an image emerges on its own, like a sudden event. I begin without preliminary sketches, a wrong line cannot be corrected, and everything is done in a single breath. I focus on the speed and weight of each line, its direction and tremor, discovering a movement and following where it leads. I may make dozens of drawings every day and come away with only one or two worth keeping. Such a simple act is so difficult, and so precious.
+            </p>
+          </div>
 
         </div>
       </section>
@@ -737,6 +814,33 @@
 
       aboutToggle.setAttribute('aria-expanded', String(!isExpanded));
       aboutText.classList.toggle('is-open', !isExpanded);
+    });
+
+    /* LANGUAGE SWITCH */
+    const languageKo = document.getElementById('language-ko');
+    const languageEn = document.getElementById('language-en');
+    const koreanText = document.getElementById('about-korean');
+    const englishText = document.getElementById('about-english');
+
+    function switchLanguage(language) {
+      const showKorean = language === 'ko';
+
+      koreanText.hidden = !showKorean;
+      englishText.hidden = showKorean;
+
+      languageKo.classList.toggle('is-active', showKorean);
+      languageEn.classList.toggle('is-active', !showKorean);
+
+      languageKo.setAttribute('aria-pressed', String(showKorean));
+      languageEn.setAttribute('aria-pressed', String(!showKorean));
+    }
+
+    languageKo.addEventListener('click', () => {
+      switchLanguage('ko');
+    });
+
+    languageEn.addEventListener('click', () => {
+      switchLanguage('en');
     });
   </script>
 
