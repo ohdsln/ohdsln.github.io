@@ -183,9 +183,27 @@
       stroke-linejoin: round;
     }
 
-    /* CV SECTIONS */
+    /* BILINGUAL CV LAYOUT */
+    .cv-bilingual {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      column-gap: 50px;
+      align-items: start;
+    }
+
     .cv-language {
       width: 100%;
+      min-width: 0;
+    }
+
+    /* DESKTOP VERTICAL DIVIDER */
+    .cv-language:first-child {
+      padding-right: 25px;
+      border-right: 1px solid #e5e5e5;
+    }
+
+    .cv-language:last-child {
+      padding-left: 25px;
     }
 
     .cv-section {
@@ -215,6 +233,7 @@
 
     .cv-detail {
       color: #333333;
+      min-width: 0;
     }
 
     .cv-venue {
@@ -222,11 +241,12 @@
       font-size: 13px;
     }
 
-    /* LANGUAGE DIVIDER */
+    /* MOBILE HORIZONTAL DIVIDER */
     .language-divider {
+      display: none;
       width: 100%;
       height: 1px;
-      margin: 55px 0;
+      margin: 45px 0;
       background: #e5e5e5;
     }
 
@@ -279,6 +299,24 @@
         margin-bottom: 40px;
       }
 
+      /* STACK KOREAN AND ENGLISH */
+      .cv-bilingual {
+        display: block;
+      }
+
+      .cv-language:first-child {
+        padding-right: 0;
+        border-right: none;
+      }
+
+      .cv-language:last-child {
+        padding-left: 0;
+      }
+
+      .language-divider {
+        display: block;
+      }
+
       .cv-section {
         margin-bottom: 28px;
       }
@@ -297,10 +335,6 @@
 
       .cv-venue {
         font-size: 12px;
-      }
-
-      .language-divider {
-        margin: 45px 0;
       }
 
       footer {
@@ -413,7 +447,6 @@
         </button>
         <div class="dropdown">
           <a href="statement.html">Artist's Statement</a>
-          
           <a href="#">Exhibition Review -1 (2023)</a>
           <a href="#">Exhibition Review -2 (2023)</a>
         </div>
@@ -468,520 +501,525 @@
       </div>
 
 
-      <!-- KOREAN CV -->
-      <section class="cv-language">
+      <!-- BILINGUAL CV: TWO COLUMNS ON DESKTOP -->
+      <div class="cv-bilingual">
 
-        <section class="cv-section">
-          <h2 class="section-title">학력</h2>
+        <!-- KOREAN CV -->
+        <section class="cv-language">
 
-          <div class="cv-entry">
-            <div class="cv-year">2019</div>
-            <div class="cv-detail">홍익대학교 일반대학원 회화과 졸업</div>
-          </div>
+          <section class="cv-section">
+            <h2 class="section-title">학력</h2>
 
-          <div class="cv-entry">
-            <div class="cv-year">2008</div>
-            <div class="cv-detail">이화여자대학교 조형예술대학 환경디자인과 졸업</div>
-          </div>
+            <div class="cv-entry">
+              <div class="cv-year">2019</div>
+              <div class="cv-detail">홍익대학교 일반대학원 회화과 졸업</div>
+            </div>
 
-          <div class="cv-entry">
-            <div class="cv-year">2003</div>
-            <div class="cv-detail">선화예술고등학교 졸업</div>
-          </div>
+            <div class="cv-entry">
+              <div class="cv-year">2008</div>
+              <div class="cv-detail">이화여자대학교 조형예술대학 환경디자인과 졸업</div>
+            </div>
 
-          <div class="cv-entry">
-            <div class="cv-year">2000</div>
-            <div class="cv-detail">선화예술학교 졸업</div>
-          </div>
+            <div class="cv-entry">
+              <div class="cv-year">2003</div>
+              <div class="cv-detail">선화예술고등학교 졸업</div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2000</div>
+              <div class="cv-detail">선화예술학교 졸업</div>
+            </div>
+          </section>
+
+
+          <section class="cv-section">
+            <h2 class="section-title">개인전</h2>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                결 안으로<br>
+                <span class="cv-venue">폴스페이스 갤러리, 인천</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2024</div>
+              <div class="cv-detail">
+                둘: 하나, 그리고 또 하나<br>
+                <span class="cv-venue">그블루 갤러리 / 드로잉룸 403, 서울</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2023</div>
+              <div class="cv-detail">
+                연약한 것들의 지층<br>
+                <span class="cv-venue">배다리 잇다스페이스 작은미술관, 인천</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2022</div>
+              <div class="cv-detail">
+                연약한 것들의 지층<br>
+                <span class="cv-venue">아웃오브더박스 성수, 서울</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2019</div>
+              <div class="cv-detail">
+                몽타주<br>
+                <span class="cv-venue">SPACE 갤러리, 서울</span>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="cv-section">
+            <h2 class="section-title">그룹전</h2>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                세상의 모든 드로잉<br>
+                <span class="cv-venue">경기창작캠퍼스, 경기도</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                회화의 시대<br>
+                <span class="cv-venue">아터테인, 서울</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                경기섬 아트페스타<br>
+                <span class="cv-venue">경기창작캠퍼스, 경기도</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                세상의 모든 드로잉<br>
+                <span class="cv-venue">아터테인, 서울</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                기회소득 예술인 페스티벌 전시 "본업" – 가변하는 공간들<br>
+                <span class="cv-venue">고색뉴지엄, 경기도</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                기회소득 예술인 페스티벌 전시 "본업" - 시소 : 일상과 이상 사이<br>
+                <span class="cv-venue">김포 아트빌리지 아트센터, 경기도</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                트리스트 얼터너티브 아트페어 (TRYST Alternative Art Fair)<br>
+                <span class="cv-venue">토런스, 미국 캘리포니아</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                틈새 포개기<br>
+                <span class="cv-venue">신도리코 서울본사 '공간 타륜', 서울</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2024</div>
+              <div class="cv-detail">
+                기회소득 예술인 페스티벌 전시 "본업"<br>
+                <span class="cv-venue">양평군립미술관, 경기도</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2023</div>
+              <div class="cv-detail">
+                인천 아시아 아트쇼 2023<br>
+                <span class="cv-venue">송도 컨벤시아, 인천</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2022</div>
+              <div class="cv-detail">
+                배다리 잇다스페이스 작은미술관 개관전<br>
+                <span class="cv-venue">배다리 잇다스페이스 작은미술관, 인천</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2018</div>
+              <div class="cv-detail">
+                제20회 단원미술제 선정작가전<br>
+                <span class="cv-venue">단원미술관, 경기도</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2018</div>
+              <div class="cv-detail">
+                Pseudo Reality - 석사 학위 청구전<br>
+                <span class="cv-venue">홍익대학교 현대미술관, 서울</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2016</div>
+              <div class="cv-detail">
+                GPS전<br>
+                <span class="cv-venue">홍익대학교 현대미술관, 서울</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2015</div>
+              <div class="cv-detail">
+                모놀로그<br>
+                <span class="cv-venue">삼원페이퍼갤러리, 서울</span>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="cv-section">
+            <h2 class="section-title">수상경력</h2>
+
+            <div class="cv-entry">
+              <div class="cv-year">2018</div>
+              <div class="cv-detail">
+                제20회 단원미술제 선정작가<br>
+                <span class="cv-venue">재단법인 안산문화재단, 경기도</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2017</div>
+              <div class="cv-detail">
+                제4회 전국대학미술공모전 입선<br>
+                <span class="cv-venue">미술과 비평, 서울</span>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="cv-section">
+            <h2 class="section-title">기타경력</h2>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                치매노인 미술치료 「2026 문화로 치유 지원사업 - 마음치유, 봄처럼」 협력 예술인<br>
+                <span class="cv-venue">종로구 치매안심센터</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2020<br>-2022</div>
+              <div class="cv-detail">
+                방과후 미술 강사<br>
+                <span class="cv-venue">서울사범대학교 부설 여자중학교, 서울</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2008<br>-2013</div>
+              <div class="cv-detail">
+                여객선 디자이너로 근무<br>
+                <span class="cv-venue">STX조선해양, 서울</span>
+              </div>
+            </div>
+          </section>
+
         </section>
 
 
-        <section class="cv-section">
-          <h2 class="section-title">개인전</h2>
+        <!-- DIVIDER: MOBILE ONLY -->
+        <div class="language-divider"></div>
 
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              결 안으로<br>
-              <span class="cv-venue">폴스페이스 갤러리, 인천</span>
-            </div>
-          </div>
 
-          <div class="cv-entry">
-            <div class="cv-year">2024</div>
-            <div class="cv-detail">
-              둘: 하나, 그리고 또 하나<br>
-              <span class="cv-venue">그블루 갤러리 / 드로잉룸 403, 서울</span>
-            </div>
-          </div>
+        <!-- ENGLISH CV -->
+        <section class="cv-language">
 
-          <div class="cv-entry">
-            <div class="cv-year">2023</div>
-            <div class="cv-detail">
-              연약한 것들의 지층<br>
-              <span class="cv-venue">배다리 잇다스페이스 작은미술관, 인천</span>
-            </div>
-          </div>
+          <section class="cv-section">
+            <h2 class="section-title">Education</h2>
 
-          <div class="cv-entry">
-            <div class="cv-year">2022</div>
-            <div class="cv-detail">
-              연약한 것들의 지층<br>
-              <span class="cv-venue">아웃오브더박스 성수, 서울</span>
+            <div class="cv-entry">
+              <div class="cv-year">2019</div>
+              <div class="cv-detail">
+                M.F.A. in Painting<br>
+                <span class="cv-venue">Hongik University, Seoul, Korea</span>
+              </div>
             </div>
-          </div>
 
-          <div class="cv-entry">
-            <div class="cv-year">2019</div>
-            <div class="cv-detail">
-              몽타주<br>
-              <span class="cv-venue">SPACE 갤러리, 서울</span>
+            <div class="cv-entry">
+              <div class="cv-year">2008</div>
+              <div class="cv-detail">
+                B.A. in Environmental Design<br>
+                <span class="cv-venue">Ewha Womans University, Seoul, Korea</span>
+              </div>
             </div>
-          </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2003</div>
+              <div class="cv-detail">
+                Graduated from Sunhwa Arts High School<br>
+                <span class="cv-venue">Major in Fine Arts</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2000</div>
+              <div class="cv-detail">
+                Graduated from Sunhwa Arts Middle School<br>
+                <span class="cv-venue">Major in Fine Arts</span>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="cv-section">
+            <h2 class="section-title">Solo Exhibitions</h2>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                Into the Grain<br>
+                <span class="cv-venue">Paul Space Gallery, Incheon, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2024</div>
+              <div class="cv-detail">
+                Two: One, and Another<br>
+                <span class="cv-venue">GBLUE Gallery / Drawing Room 403, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2023</div>
+              <div class="cv-detail">
+                Strata of the Vulnerables<br>
+                <span class="cv-venue">Baedari Itta Space, Incheon, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2022</div>
+              <div class="cv-detail">
+                Strata of the Vulnerables<br>
+                <span class="cv-venue">Out of the Box Seongsu, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2019</div>
+              <div class="cv-detail">
+                Montage<br>
+                <span class="cv-venue">SPACE Gallery, Seoul, Korea</span>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="cv-section">
+            <h2 class="section-title">Group Exhibitions</h2>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                All That Drawing<br>
+                <span class="cv-venue">Gyeonggi Creation Campus, Gyeonggi-do, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                The Age of Painting<br>
+                <span class="cv-venue">ARTertain, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                Gyeonggi Island Art Festa<br>
+                <span class="cv-venue">Gyeonggi Creation Campus, Gyeonggi-do, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                All That Drawing<br>
+                <span class="cv-venue">ARTertain, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                Opportunity Income for Artists Festival: Art as a Vocation – Evolving Spaces<br>
+                <span class="cv-venue">Gosaek Newseum, Gyeonggi-do, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                Opportunity Income for Artists Festival: Art as a Vocation – Seesaw: Between Everyday Life and Ideals<br>
+                <span class="cv-venue">Gimpo Art Village, Gyeonggi-do, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                TRYST Alternative Art Fair<br>
+                <span class="cv-venue">Torrance, California, USA</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2025</div>
+              <div class="cv-detail">
+                Layering the Gaps<br>
+                <span class="cv-venue">Space Taryoon, SINDOH Seoul Headquarters, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2024</div>
+              <div class="cv-detail">
+                Opportunity Income for Artists Festival Exhibition: Art as a Vocation<br>
+                <span class="cv-venue">Yangpyeong Art Museum, Gyeonggi-do, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2023</div>
+              <div class="cv-detail">
+                Incheon Asia Art Show 2023<br>
+                <span class="cv-venue">Songdo Convensia, Incheon, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2022</div>
+              <div class="cv-detail">
+                Opening Exhibition of Baedari Itta Space<br>
+                <span class="cv-venue">Baedari Itta Space, Incheon, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2018</div>
+              <div class="cv-detail">
+                20th Danwon Art Festival – Selected Artists Exhibition<br>
+                <span class="cv-venue">Danwon Art Museum, Gyeonggi-do, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2018</div>
+              <div class="cv-detail">
+                Pseudo Reality – MFA Graduation Exhibition<br>
+                <span class="cv-venue">Hongik University Museum of Contemporary Art, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2016</div>
+              <div class="cv-detail">
+                GPS Exhibition<br>
+                <span class="cv-venue">Hongik University Museum of Contemporary Art, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2015</div>
+              <div class="cv-detail">
+                Monologue<br>
+                <span class="cv-venue">Samwon Paper Gallery, Seoul, Korea</span>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="cv-section">
+            <h2 class="section-title">Awards</h2>
+
+            <div class="cv-entry">
+              <div class="cv-year">2018</div>
+              <div class="cv-detail">
+                Selected Artist, 20th Danwon Art Festival<br>
+                <span class="cv-venue">Ansan Cultural Foundation, Gyeonggi-do, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2017</div>
+              <div class="cv-detail">
+                Honorable Mention, 4th National University Art Competition<br>
+                <span class="cv-venue">Art and Criticism, Seoul, Korea</span>
+              </div>
+            </div>
+          </section>
+
+
+          <section class="cv-section">
+            <h2 class="section-title">Others</h2>
+
+            <div class="cv-entry">
+              <div class="cv-year">2026</div>
+              <div class="cv-detail">
+                Collaborating Artist, “Healing the Mind, Like Spring” – 2026 Art Therapy Program for Older Adults<br>
+                <span class="cv-venue">Jongno Dementia Care Center, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2020<br>-2022</div>
+              <div class="cv-detail">
+                After-school Art Instructor<br>
+                <span class="cv-venue">Seoul National Universtiy Girls’ Middle School, Seoul, Korea</span>
+              </div>
+            </div>
+
+            <div class="cv-entry">
+              <div class="cv-year">2008<br>-2013</div>
+              <div class="cv-detail">
+                Passenger Ship Designer<br>
+                <span class="cv-venue">STX Offshore & Shipbuilding, Seoul, Korea</span>
+              </div>
+            </div>
+          </section>
+
         </section>
 
-
-        <section class="cv-section">
-          <h2 class="section-title">그룹전</h2>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              세상의 모든 드로잉<br>
-              <span class="cv-venue">경기창작캠퍼스, 경기도</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              회화의 시대<br>
-              <span class="cv-venue">아터테인, 서울</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              경기섬 아트페스타<br>
-              <span class="cv-venue">경기창작캠퍼스, 경기도</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              세상의 모든 드로잉<br>
-              <span class="cv-venue">아터테인, 서울</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              기회소득 예술인 페스티벌 전시 "본업" – 가변하는 공간들<br>
-              <span class="cv-venue">고색뉴지엄, 경기도</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              기회소득 예술인 페스티벌 전시 "본업" - 시소 : 일상과 이상 사이<br>
-              <span class="cv-venue">김포 아트빌리지 아트센터, 경기도</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              트리스트 얼터너티브 아트페어 (TRYST Alternative Art Fair)<br>
-              <span class="cv-venue">토런스, 미국 캘리포니아</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              틈새 포개기<br>
-              <span class="cv-venue">신도리코 서울본사 '공간 타륜', 서울</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2024</div>
-            <div class="cv-detail">
-              기회소득 예술인 페스티벌 전시 "본업"<br>
-              <span class="cv-venue">양평군립미술관, 경기도</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2023</div>
-            <div class="cv-detail">
-              인천 아시아 아트쇼 2023<br>
-              <span class="cv-venue">송도 컨벤시아, 인천</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2022</div>
-            <div class="cv-detail">
-              배다리 잇다스페이스 작은미술관 개관전<br>
-              <span class="cv-venue">배다리 잇다스페이스 작은미술관, 인천</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2018</div>
-            <div class="cv-detail">
-              제20회 단원미술제 선정작가전<br>
-              <span class="cv-venue">단원미술관, 경기도</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2018</div>
-            <div class="cv-detail">
-              Pseudo Reality - 석사 학위 청구전<br>
-              <span class="cv-venue">홍익대학교 현대미술관, 서울</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2016</div>
-            <div class="cv-detail">
-              GPS전<br>
-              <span class="cv-venue">홍익대학교 현대미술관, 서울</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2015</div>
-            <div class="cv-detail">
-              모놀로그<br>
-              <span class="cv-venue">삼원페이퍼갤러리, 서울</span>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="cv-section">
-          <h2 class="section-title">수상경력</h2>
-
-          <div class="cv-entry">
-            <div class="cv-year">2018</div>
-            <div class="cv-detail">
-              제20회 단원미술제 선정작가<br>
-              <span class="cv-venue">재단법인 안산문화재단, 경기도</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2017</div>
-            <div class="cv-detail">
-              제4회 전국대학미술공모전 입선<br>
-              <span class="cv-venue">미술과 비평, 서울</span>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="cv-section">
-          <h2 class="section-title">기타경력</h2>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              치매노인 미술치료 「2026 문화로 치유 지원사업 - 마음치유, 봄처럼」 협력 예술인<br>
-              <span class="cv-venue">종로구 치매안심센터</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2020<br>-2022</div>
-            <div class="cv-detail">
-              방과후 미술 강사<br>
-              <span class="cv-venue">서울사범대학교 부설 여자중학교, 서울</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2008<br>-2013</div>
-            <div class="cv-detail">
-              여객선 디자이너로 근무<br>
-              <span class="cv-venue">STX조선해양, 서울</span>
-            </div>
-          </div>
-        </section>
-
-      </section>
-
-
-      <div class="language-divider"></div>
-
-
-      <!-- ENGLISH CV -->
-      <section class="cv-language">
-
-        <section class="cv-section">
-          <h2 class="section-title">Education</h2>
-
-          <div class="cv-entry">
-            <div class="cv-year">2019</div>
-            <div class="cv-detail">
-              M.F.A. in Painting<br>
-              <span class="cv-venue">Hongik University, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2008</div>
-            <div class="cv-detail">
-              B.A. in Environmental Design<br>
-              <span class="cv-venue">Ewha Womans University, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2003</div>
-            <div class="cv-detail">
-              Graduated from Sunhwa Arts High School<br>
-              <span class="cv-venue">Major in Fine Arts</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2000</div>
-            <div class="cv-detail">
-              Graduated from Sunhwa Arts Middle School<br>
-              <span class="cv-venue">Major in Fine Arts</span>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="cv-section">
-          <h2 class="section-title">Solo Exhibitions</h2>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              Into the Grain<br>
-              <span class="cv-venue">Paul Space Gallery, Incheon, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2024</div>
-            <div class="cv-detail">
-              Two: One, and Another<br>
-              <span class="cv-venue">GBLUE Gallery / Drawing Room 403, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2023</div>
-            <div class="cv-detail">
-              Strata of the Vulnerables<br>
-              <span class="cv-venue">Baedari Itta Space, Incheon, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2022</div>
-            <div class="cv-detail">
-              Strata of the Vulnerables<br>
-              <span class="cv-venue">Out of the Box Seongsu, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2019</div>
-            <div class="cv-detail">
-              Montage<br>
-              <span class="cv-venue">SPACE Gallery, Seoul, Korea</span>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="cv-section">
-          <h2 class="section-title">Group Exhibitions</h2>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              All That Drawing<br>
-              <span class="cv-venue">Gyeonggi Creation Campus, Gyeonggi-do, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              The Age of Painting<br>
-              <span class="cv-venue">ARTertain, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              Gyeonggi Island Art Festa<br>
-              <span class="cv-venue">Gyeonggi Creation Campus, Gyeonggi-do, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              All That Drawing<br>
-              <span class="cv-venue">ARTertain, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              Opportunity Income for Artists Festival: Art as a Vocation – Evolving Spaces<br>
-              <span class="cv-venue">Gosaek Newseum, Gyeonggi-do, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              Opportunity Income for Artists Festival: Art as a Vocation – Seesaw: Between Everyday Life and Ideals<br>
-              <span class="cv-venue">Gimpo Art Village, Gyeonggi-do, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              TRYST Alternative Art Fair<br>
-              <span class="cv-venue">Torrance, California, USA</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2025</div>
-            <div class="cv-detail">
-              Layering the Gaps<br>
-              <span class="cv-venue">Space Taryoon, SINDOH Seoul Headquarters, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2024</div>
-            <div class="cv-detail">
-              Opportunity Income for Artists Festival Exhibition: Art as a Vocation<br>
-              <span class="cv-venue">Yangpyeong Art Museum, Gyeonggi-do, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2023</div>
-            <div class="cv-detail">
-              Incheon Asia Art Show 2023<br>
-              <span class="cv-venue">Songdo Convensia, Incheon, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2022</div>
-            <div class="cv-detail">
-              Opening Exhibition of Baedari Itta Space<br>
-              <span class="cv-venue">Baedari Itta Space, Incheon, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2018</div>
-            <div class="cv-detail">
-              20th Danwon Art Festival – Selected Artists Exhibition<br>
-              <span class="cv-venue">Danwon Art Museum, Gyeonggi-do, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2018</div>
-            <div class="cv-detail">
-              Pseudo Reality – MFA Graduation Exhibition<br>
-              <span class="cv-venue">Hongik University Museum of Contemporary Art, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2016</div>
-            <div class="cv-detail">
-              GPS Exhibition<br>
-              <span class="cv-venue">Hongik University Museum of Contemporary Art, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2015</div>
-            <div class="cv-detail">
-              Monologue<br>
-              <span class="cv-venue">Samwon Paper Gallery, Seoul, Korea</span>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="cv-section">
-          <h2 class="section-title">Awards</h2>
-
-          <div class="cv-entry">
-            <div class="cv-year">2018</div>
-            <div class="cv-detail">
-              Selected Artist, 20th Danwon Art Festival<br>
-              <span class="cv-venue">Ansan Cultural Foundation, Gyeonggi-do, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2017</div>
-            <div class="cv-detail">
-              Honorable Mention, 4th National University Art Competition<br>
-              <span class="cv-venue">Art and Criticism, Seoul, Korea</span>
-            </div>
-          </div>
-        </section>
-
-
-        <section class="cv-section">
-          <h2 class="section-title">Others</h2>
-
-          <div class="cv-entry">
-            <div class="cv-year">2026</div>
-            <div class="cv-detail">
-              Collaborating Artist, “Healing the Mind, Like Spring” – 2026 Art Therapy Program for Older Adults<br>
-              <span class="cv-venue">Jongno Dementia Care Center, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2020<br>-2022</div>
-            <div class="cv-detail">
-              After-school Art Instructor<br>
-              <span class="cv-venue">Seoul National Universtiy Girls’ Middle School, Seoul, Korea</span>
-            </div>
-          </div>
-
-          <div class="cv-entry">
-            <div class="cv-year">2008<br>-2013</div>
-            <div class="cv-detail">
-              Passenger Ship Designer<br>
-              <span class="cv-venue">STX Offshore & Shipbuilding, Seoul, Korea</span>
-            </div>
-          </div>
-        </section>
-
-      </section>
-
+      </div>
     </div>
   </main>
 
