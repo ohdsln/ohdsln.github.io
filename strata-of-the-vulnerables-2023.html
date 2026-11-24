@@ -292,7 +292,8 @@
       background: #cccccc;
     }
 
-    .read-more-button {
+    .read-more-button,
+    .essay-close-bottom {
       padding: 0;
       border: none;
       background: none;
@@ -304,7 +305,8 @@
       transition: color 0.2s ease;
     }
 
-    .read-more-button:hover {
+    .read-more-button:hover,
+    .essay-close-bottom:hover {
       color: #03a890;
     }
 
@@ -320,7 +322,7 @@
     .language-switch {
       display: flex;
       gap: 18px;
-      margin-bottom: 12px;
+      margin-bottom: 27px;
     }
 
     .language-button {
@@ -393,6 +395,13 @@
 
     .review-english {
       word-break: normal;
+    }
+
+    /* BOTTOM CLOSE BUTTON */
+    .essay-bottom-action {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 20px;
     }
 
     /* FOOTNOTE POPUP */
@@ -690,13 +699,14 @@
         height: 12px;
       }
 
-      .read-more-button {
+      .read-more-button,
+      .essay-close-bottom {
         font-size: 12px;
       }
 
       .language-switch {
         gap: 15px;
-        margin-bottom: 10px;
+        margin-bottom: 22px;
       }
 
       .language-button {
@@ -719,6 +729,10 @@
 
       .review-body p {
         margin-bottom: 12px;
+      }
+
+      .essay-bottom-action {
+        margin-top: 17px;
       }
 
       .footnote-popover {
@@ -848,7 +862,7 @@
             type="button"
             aria-expanded="false"
             aria-controls="essay-content-01"
-          >Read more</button>
+          >Read</button>
         </div>
 
         <div class="essay-content" id="essay-content-01">
@@ -909,6 +923,15 @@
 
           </div>
 
+          <!-- BOTTOM CLOSE BUTTON -->
+          <div class="essay-bottom-action">
+            <button
+              class="essay-close-bottom"
+              type="button"
+              aria-controls="essay-content-01"
+            >Close</button>
+          </div>
+
         </div>
 
       </article>
@@ -924,7 +947,7 @@
             type="button"
             aria-expanded="false"
             aria-controls="essay-content-02"
-          >Read more</button>
+          >Read</button>
         </div>
 
         <div class="essay-content" id="essay-content-02">
@@ -1167,18 +1190,50 @@
 
   <!-- ESSAY EXPAND / COLLAPSE SCRIPT -->
   <script>
+    function setEssayState(content, isOpen) {
+      if (!content) return;
+
+      const topButton = document.querySelector(
+        `.read-more-button[aria-controls="${content.id}"]`
+      );
+
+      content.classList.toggle('is-open', isOpen);
+
+      if (topButton) {
+        topButton.setAttribute('aria-expanded', String(isOpen));
+        topButton.textContent = isOpen ? 'Close' : 'Read';
+      }
+
+      if (!isOpen) {
+        closeAllFootnotes();
+      }
+    }
+
+
     document.querySelectorAll('.read-more-button').forEach(button => {
       button.addEventListener('click', () => {
         const contentId = button.getAttribute('aria-controls');
         const content = document.getElementById(contentId);
         const isOpen = button.getAttribute('aria-expanded') === 'true';
 
-        button.setAttribute('aria-expanded', String(!isOpen));
-        content.classList.toggle('is-open', !isOpen);
-        button.textContent = isOpen ? 'Read more' : 'Read less';
+        setEssayState(content, !isOpen);
+      });
+    });
 
-        if (isOpen) {
-          closeAllFootnotes();
+
+    document.querySelectorAll('.essay-close-bottom').forEach(button => {
+      button.addEventListener('click', () => {
+        const contentId = button.getAttribute('aria-controls');
+        const content = document.getElementById(contentId);
+
+        setEssayState(content, false);
+
+        const topButton = document.querySelector(
+          `.read-more-button[aria-controls="${contentId}"]`
+        );
+
+        if (topButton) {
+          topButton.focus({ preventScroll: true });
         }
       });
     });
