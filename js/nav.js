@@ -113,4 +113,3 @@ document.addEventListener('click', (event) => {
     closeMenus();
   }
 });
-
