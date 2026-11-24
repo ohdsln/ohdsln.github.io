@@ -650,12 +650,20 @@
       }
 
       .thumbnail-list {
+        justify-content: flex-start;
+        width: 100%;
+        max-width: 100%;
         gap: 6px;
         margin-top: 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding: 0 0 5px;
+        box-sizing: border-box;
+        -webkit-overflow-scrolling: touch;
       }
 
       .thumbnail {
-        flex-basis: 75px;
+        flex: 0 0 75px;
       }
 
       .installation-gallery {
