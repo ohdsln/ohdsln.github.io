@@ -33,17 +33,38 @@
       text-align: center;
     }
 
+    .page-category {
+      display: block;
+      margin-bottom: 9px;
+      color: #999999;
+      font-size: 12px;
+      font-weight: 400;
+      letter-spacing: 0.2px;
+    }
+
     .page-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0 12px;
       margin: 0;
       color: #222222;
       font-size: 17px;
       font-weight: 400;
-      line-height: 1.4;
+      line-height: 1.6;
       letter-spacing: -0.4px;
     }
 
+    .page-title-divider {
+      display: inline-block;
+      width: 1px;
+      height: 15px;
+      background: #cccccc;
+    }
+
     .page-title-en {
-      display: block;
+      display: inline;
     }
 
     /* EXHIBITION INFORMATION AND POSTER */
@@ -232,7 +253,7 @@
       border: 1px solid #03a890;
     }
 
-    /* EXHIBITION TEXTS */
+    /* EXHIBITION ESSAYS */
     .exhibition-texts {
       width: 100%;
       max-width: 900px;
@@ -241,13 +262,54 @@
     }
 
     .exhibition-text {
-      margin-bottom: 65px;
+      margin-bottom: 42px;
+    }
+
+    .essay-heading {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px 16px;
+      margin-bottom: 14px;
+    }
+
+    .text-title {
+      margin: 0;
+      font-size: 17px;
+      font-weight: 400;
+      line-height: 1.5;
+      color: #333333;
+    }
+
+    .read-more-button {
+      padding: 0;
+      border: none;
+      background: none;
+      color: #999999;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 400;
+      cursor: pointer;
+      transition: color 0.2s ease;
+    }
+
+    .read-more-button:hover {
+      color: #03a890;
+    }
+
+    .essay-content {
+      display: none;
+      padding-top: 5px;
+    }
+
+    .essay-content.is-open {
+      display: block;
     }
 
     .language-switch {
       display: flex;
       gap: 18px;
-      margin-bottom: 12px;
+      margin-bottom: 15px;
     }
 
     .language-button {
@@ -265,14 +327,6 @@
     .language-button:hover,
     .language-button.is-active {
       color: #03a890;
-    }
-
-    .text-title {
-      margin: 0 0 20px;
-      font-size: 17px;
-      font-weight: 400;
-      line-height: 1.5;
-      color: #333333;
     }
 
     .text-content {
@@ -421,10 +475,6 @@
         max-width: 100%;
       }
 
-      .text-title {
-        font-size: 16px;
-      }
-
       .text-content {
         font-size: 13px;
       }
@@ -443,6 +493,14 @@
 
       .page-heading {
         margin-bottom: 30px;
+      }
+
+      .page-title {
+        gap: 0 8px;
+      }
+
+      .page-title-divider {
+        height: 13px;
       }
 
       .exhibition-intro {
@@ -497,21 +555,29 @@
       }
 
       .exhibition-text {
-        margin-bottom: 50px;
+        margin-bottom: 35px;
       }
 
-      .language-switch {
-        gap: 15px;
-        margin-bottom: 10px;
-      }
-
-      .language-button {
-        font-size: 12px;
+      .essay-heading {
+        gap: 7px 12px;
+        margin-bottom: 12px;
       }
 
       .text-title {
         font-size: 15px;
-        margin-bottom: 15px;
+      }
+
+      .read-more-button {
+        font-size: 12px;
+      }
+
+      .language-switch {
+        gap: 15px;
+        margin-bottom: 12px;
+      }
+
+      .language-button {
+        font-size: 12px;
       }
 
       .text-content {
@@ -554,9 +620,11 @@
   <main>
 
     <div class="page-heading">
+      <span class="page-category">Solo Exhibition</span>
       <h1 class="page-title">
-        개인전 : 연약한 것들의 지층
-        <span class="page-title-en">Solo Exhibition: Strata of the Vulnerables</span>
+        <span>연약한 것들의 지층</span>
+        <span class="page-title-divider" aria-hidden="true"></span>
+        <span class="page-title-en">Strata of the Vulnerables</span>
       </h1>
     </div>
 
@@ -620,46 +688,70 @@
     </section>
 
 
-    <!-- EXHIBITION TEXTS -->
+    <!-- CRITICAL ESSAYS -->
     <section class="exhibition-texts">
 
-      <!-- FOREWORD -->
+      <!-- ESSAY 01 -->
       <article class="exhibition-text">
 
-        <div class="language-switch" data-language-group="foreword">
-          <button class="language-button is-active" type="button" data-language="ko">한국어</button>
-          <button class="language-button" type="button" data-language="en">English</button>
+        <div class="essay-heading">
+          <h2 class="text-title">비평문 제목 1</h2>
+          <button
+            class="read-more-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="essay-content-01"
+          >Read more</button>
         </div>
 
-        <h2 class="text-title">Foreword</h2>
+        <div class="essay-content" id="essay-content-01">
 
-        <div class="text-content" data-language-group="foreword" data-language="ko">
-          <!-- 여기에 한국어 서문을 입력 -->
-        </div>
+          <div class="language-switch" data-language-group="essay-01">
+            <button class="language-button is-active" type="button" data-language="ko">한국어</button>
+            <button class="language-button" type="button" data-language="en">English</button>
+          </div>
 
-        <div class="text-content" data-language-group="foreword" data-language="en" hidden>
-          <!-- Enter the English foreword here -->
+          <div class="text-content" data-language-group="essay-01" data-language="ko">
+            <!-- 여기에 첫 번째 비평문의 한국어 원문을 입력 -->
+          </div>
+
+          <div class="text-content" data-language-group="essay-01" data-language="en" hidden>
+            <!-- Enter the English version of the first critical essay here -->
+          </div>
+
         </div>
 
       </article>
 
 
-      <!-- CRITICAL ESSAY -->
+      <!-- ESSAY 02 -->
       <article class="exhibition-text">
 
-        <div class="language-switch" data-language-group="essay">
-          <button class="language-button is-active" type="button" data-language="ko">한국어</button>
-          <button class="language-button" type="button" data-language="en">English</button>
+        <div class="essay-heading">
+          <h2 class="text-title">비평문 제목 2</h2>
+          <button
+            class="read-more-button"
+            type="button"
+            aria-expanded="false"
+            aria-controls="essay-content-02"
+          >Read more</button>
         </div>
 
-        <h2 class="text-title">Critical Essay</h2>
+        <div class="essay-content" id="essay-content-02">
 
-        <div class="text-content" data-language-group="essay" data-language="ko">
-          <!-- 여기에 한국어 비평문을 입력 -->
-        </div>
+          <div class="language-switch" data-language-group="essay-02">
+            <button class="language-button is-active" type="button" data-language="ko">한국어</button>
+            <button class="language-button" type="button" data-language="en">English</button>
+          </div>
 
-        <div class="text-content" data-language-group="essay" data-language="en" hidden>
-          <!-- Enter the English critical essay here -->
+          <div class="text-content" data-language-group="essay-02" data-language="ko">
+            <!-- 여기에 두 번째 비평문의 한국어 원문을 입력 -->
+          </div>
+
+          <div class="text-content" data-language-group="essay-02" data-language="en" hidden>
+            <!-- Enter the English version of the second critical essay here -->
+          </div>
+
         </div>
 
       </article>
@@ -880,6 +972,22 @@
 
     createThumbnails();
 
+  </script>
+
+
+  <!-- ESSAY EXPAND / COLLAPSE SCRIPT -->
+  <script>
+    document.querySelectorAll('.read-more-button').forEach(button => {
+      button.addEventListener('click', () => {
+        const contentId = button.getAttribute('aria-controls');
+        const content = document.getElementById(contentId);
+        const isOpen = button.getAttribute('aria-expanded') === 'true';
+
+        button.setAttribute('aria-expanded', String(!isOpen));
+        content.classList.toggle('is-open', !isOpen);
+        button.textContent = isOpen ? 'Read more' : 'Read less';
+      });
+    });
   </script>
 
 
