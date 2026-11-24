@@ -511,6 +511,7 @@
       activeItem = item;
     }
 
+    /* Open dropdowns when hovering over their menu titles */
     navItems.forEach(item => {
       const button = item.querySelector('button.nav-trigger');
 
@@ -533,13 +534,35 @@
           }
         });
       }
-
-      /* Close dropdown immediately when pointer leaves each menu item */
-      item.addEventListener('mouseleave', () => {
-        closeMenus();
-      });
     });
 
+    /* Close the active dropdown when the pointer moves over another menu title */
+    nav.addEventListener('pointermove', (event) => {
+      if (!activeItem || pinnedItem) {
+        return;
+      }
+
+      const pointerOnAnotherItem = Array.from(navItems).some(item => {
+        if (item === activeItem) {
+          return false;
+        }
+
+        const rect = item.getBoundingClientRect();
+
+        return (
+          event.clientX >= rect.left &&
+          event.clientX <= rect.right &&
+          event.clientY >= rect.top &&
+          event.clientY <= rect.bottom
+        );
+      });
+
+      if (pointerOnAnotherItem) {
+        closeMenus();
+      }
+    });
+
+    /* Close dropdowns when leaving the entire navigation area */
     nav.addEventListener('mouseleave', () => {
       if (pinnedItem) {
         return;
@@ -548,6 +571,7 @@
       closeMenus();
     });
 
+    /* Close dropdowns when clicking outside the navigation */
     document.addEventListener('click', (event) => {
       if (!nav.contains(event.target)) {
         closeMenus();
