@@ -7,125 +7,24 @@
 
   <title>CV / Contact | Dasole Oh</title>
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3GDJTZR23T"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3GDJTZR23T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-3GDJTZR23T');
-</script>
+    gtag('config', 'G-3GDJTZR23T');
+  </script>
 
   <link
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.min.css"
   >
 
+  <link rel="stylesheet" href="css/style.css">
+
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      color: #222222;
-      font-family: 'Wanted Sans Variable', sans-serif;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* HEADER */
-    header {
-      width: 100%;
-      padding: 22px 7% 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-    }
-
-    .site-name {
-      flex-shrink: 0;
-      font-size: 21px;
-      font-weight: 400;
-      letter-spacing: -0.5px;
-      line-height: 1.3;
-    }
-
-    /* NAVIGATION */
-    nav {
-      display: flex;
-      align-items: flex-start;
-      gap: 34px;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-trigger {
-      display: block;
-      padding: 3px 0 8px;
-      border: none;
-      background: none;
-      color: #555555;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: color 0.2s ease;
-    }
-
-    .nav-trigger:hover,
-    .nav-item.is-open .nav-trigger,
-    .nav-item:focus-within .nav-trigger {
-      color: #03a890;
-    }
-
-    /* DROPDOWN */
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: -12px;
-      min-width: 190px;
-      padding: 8px 12px 12px;
-      background: #ffffff;
-      z-index: 10;
-    }
-
-    .nav-item.is-open .dropdown {
-      display: block;
-    }
-
-    .dropdown a {
-      display: block;
-      padding: 7px 0;
-      color: #777777;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.5;
-      white-space: nowrap;
-      transition: color 0.2s ease;
-    }
-
-    .dropdown a:hover {
-      color: #03a890;
-    }
-
     /* MAIN */
     main {
       padding: 75px 7% 100px;
@@ -240,41 +139,8 @@
       font-size: 13px;
     }
 
-    /* FOOTER */
-    footer {
-      width: 100%;
-      padding: 12px 7% 18px;
-      color: #999999;
-      font-size: 11px;
-      font-weight: 400;
-    }
-
     /* TABLET / MOBILE */
     @media (max-width: 768px) {
-      header {
-        padding: 22px 6% 12px;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .site-name {
-        font-size: 20px;
-      }
-
-      nav {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 12px 24px;
-      }
-
-      .nav-trigger {
-        font-size: 13px;
-      }
-
-      .dropdown {
-        min-width: 170px;
-      }
-
       main {
         padding: 55px 6% 75px;
       }
@@ -320,26 +186,10 @@
       .cv-venue {
         font-size: 12px;
       }
-
-      footer {
-        padding: 10px 6% 15px;
-      }
     }
 
     /* SMALL MOBILE SCREENS */
     @media (max-width: 420px) {
-      header {
-        gap: 14px;
-      }
-
-      nav {
-        gap: 10px 18px;
-      }
-
-      .nav-trigger {
-        font-size: 12px;
-      }
-
       main {
         padding-top: 45px;
       }
@@ -388,16 +238,12 @@
 
   <!-- HEADER -->
   <header>
-    <a href="index.html" class="site-name">
-      Dasole Oh
-    </a>
+    <a href="index.html" class="site-name">Dasole Oh</a>
 
     <nav id="main-nav">
-
+      <!-- WORKS -->
       <div class="nav-item">
-        <button class="nav-trigger" type="button" aria-expanded="false">
-          Works
-        </button>
+        <button class="nav-trigger" type="button" aria-expanded="false">Works</button>
         <div class="dropdown">
           <a href="#">2025–2026</a>
           <a href="#">2025</a>
@@ -410,10 +256,9 @@
         </div>
       </div>
 
+      <!-- EXHIBITIONS -->
       <div class="nav-item">
-        <button class="nav-trigger" type="button" aria-expanded="false">
-          Exhibitions
-        </button>
+        <button class="nav-trigger" type="button" aria-expanded="false">Exhibitions</button>
         <div class="dropdown">
           <a href="#">Into the Grains (2025)</a>
           <a href="#">Two: One, and Another (2024)</a>
@@ -421,23 +266,15 @@
         </div>
       </div>
 
+      <!-- STATEMENT -->
       <div class="nav-item">
-        <button class="nav-trigger" type="button" aria-expanded="false">
-          Texts
-        </button>
-        <div class="dropdown">
-          <a href="statement.html">Artist's Statement</a>
-          <a href="exhibition-review-01.html">Exhibition Review -1 (2023)</a>
-          <a href="#">Exhibition Review -2 (2023)</a>
-        </div>
+        <a href="statement.html" class="nav-trigger" style="padding-bottom: 8px;">Statement</a>
       </div>
 
+      <!-- CV / CONTACT -->
       <div class="nav-item">
-        <a href="cv-contact.html" class="nav-trigger" style="padding-bottom: 8px;">
-          CV/Contact
-        </a>
+        <a href="cv-contact.html" class="nav-trigger" style="padding-bottom: 8px;">CV/Contact</a>
       </div>
-
     </nav>
   </header>
 
@@ -1007,92 +844,7 @@
 
 
   <!-- NAVIGATION SCRIPT -->
-  <script>
-    const nav = document.getElementById('main-nav');
-    const navItems = document.querySelectorAll('.nav-item');
-
-    let activeItem = null;
-    let pinnedItem = null;
-
-    function closeMenus() {
-      navItems.forEach(item => {
-        item.classList.remove('is-open');
-
-        const button = item.querySelector('.nav-trigger');
-        if (button && button.tagName === 'BUTTON') {
-          button.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      activeItem = null;
-      pinnedItem = null;
-    }
-
-    function openMenu(item) {
-      navItems.forEach(menu => {
-        menu.classList.remove('is-open');
-
-        const button = menu.querySelector('.nav-trigger');
-
-        if (button && button.tagName === 'BUTTON') {
-          button.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      if (activeItem === item && !pinnedItem) {
-        activeItem = null;
-        return;
-      }
-
-      item.classList.add('is-open');
-
-      const button = item.querySelector('.nav-trigger');
-
-      if (button && button.tagName === 'BUTTON') {
-        button.setAttribute('aria-expanded', 'true');
-      }
-
-      activeItem = item;
-    }
-
-    navItems.forEach(item => {
-      const button = item.querySelector('button.nav-trigger');
-
-      item.addEventListener('mouseenter', () => {
-        if (window.matchMedia('(hover: hover)').matches) {
-          pinnedItem = null;
-          openMenu(item);
-        }
-      });
-
-      if (button) {
-        button.addEventListener('click', (event) => {
-          event.stopPropagation();
-
-          if (pinnedItem === item) {
-            closeMenus();
-          } else {
-            pinnedItem = item;
-            openMenu(item);
-          }
-        });
-      }
-    });
-
-    nav.addEventListener('mouseleave', () => {
-      if (pinnedItem) {
-        return;
-      }
-
-      closeMenus();
-    });
-
-    document.addEventListener('click', (event) => {
-      if (!nav.contains(event.target)) {
-        closeMenus();
-      }
-    });
-  </script>
+  <script src="js/nav.js"></script>
 
 </body>
 </html>
