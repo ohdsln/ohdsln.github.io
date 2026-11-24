@@ -23,112 +23,10 @@
     href="https://cdn.jsdelivr.net/npm/wanted-sans@1.0.3/fonts/webfonts/variable/split/WantedSansVariable.min.css"
   >
 
+  <!-- Common CSS -->
+  <link rel="stylesheet" href="css/style.css">
+
   <style>
-    /* BASIC SETTINGS */
-    * {
-      box-sizing: border-box;
-    }
-
-   html {
-  scroll-behavior: smooth;
-  scrollbar-gutter: stable;
-}
-
-    body {
-      margin: 0;
-      padding: 0;
-      background: #ffffff;
-      color: #222222;
-      font-family: 'Wanted Sans Variable', sans-serif;
-      font-weight: 400;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* HEADER */
-    header {
-      width: 100%;
-      padding: 22px 7% 15px;
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 40px;
-    }
-
-    .site-name {
-      flex-shrink: 0;
-      font-size: 21px;
-      font-weight: 400;
-      letter-spacing: -0.5px;
-      line-height: 1.3;
-    }
-
-    /* NAVIGATION */
-    nav {
-      display: flex;
-      align-items: flex-start;
-      gap: 34px;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-trigger {
-      display: block;
-      padding: 3px 0 8px;
-      border: none;
-      background: none;
-      color: #555555;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 500;
-      cursor: pointer;
-      white-space: nowrap;
-      transition: color 0.2s ease;
-    }
-
-    .nav-trigger:hover,
-    .nav-item.is-open .nav-trigger,
-    .nav-item:focus-within .nav-trigger {
-      color: #03a890;
-    }
-
-    /* DROPDOWN */
-    .dropdown {
-      display: none;
-      position: absolute;
-      top: 100%;
-      left: -12px;
-      min-width: 190px;
-      padding: 8px 12px 12px;
-      background: #ffffff;
-      z-index: 10;
-    }
-
-    .nav-item.is-open .dropdown {
-      display: block;
-    }
-
-    .dropdown a {
-      display: block;
-      padding: 7px 0;
-      color: #777777;
-      font-size: 13px;
-      font-weight: 400;
-      line-height: 1.5;
-      white-space: nowrap;
-      transition: color 0.2s ease;
-    }
-
-    .dropdown a:hover {
-      color: #03a890;
-    }
-
     /* STATEMENT LAYOUT */
     main {
       width: 100%;
@@ -207,41 +105,8 @@
       word-break: normal;
     }
 
-    /* FOOTER */
-    footer {
-      width: 100%;
-      padding: 12px 7% 18px;
-      color: #999999;
-      font-size: 11px;
-      font-weight: 400;
-    }
-
     /* TABLET / MOBILE */
     @media (max-width: 768px) {
-      header {
-        padding: 22px 6% 12px;
-        flex-direction: column;
-        gap: 16px;
-      }
-
-      .site-name {
-        font-size: 20px;
-      }
-
-      nav {
-        width: 100%;
-        flex-wrap: wrap;
-        gap: 12px 24px;
-      }
-
-      .nav-trigger {
-        font-size: 13px;
-      }
-
-      .dropdown {
-        min-width: 170px;
-      }
-
       main {
         padding: 55px 6% 75px;
       }
@@ -280,26 +145,10 @@
         border-top: 1px solid #e5e5e5;
         padding-top: 28px;
       }
-
-      footer {
-        padding: 10px 6% 15px;
-      }
     }
 
     /* SMALL MOBILE SCREENS */
     @media (max-width: 420px) {
-      header {
-        gap: 14px;
-      }
-
-      nav {
-        gap: 10px 18px;
-      }
-
-      .nav-trigger {
-        font-size: 12px;
-      }
-
       main {
         padding-top: 45px;
       }
@@ -462,123 +311,8 @@
     © Dasole Oh
   </footer>
 
-  <!-- NAVIGATION SCRIPT -->
-  <script>
-    const nav = document.getElementById('main-nav');
-    const navItems = document.querySelectorAll('.nav-item');
-
-    let activeItem = null;
-    let pinnedItem = null;
-
-    function closeMenus() {
-      navItems.forEach(item => {
-        item.classList.remove('is-open');
-
-        const button = item.querySelector('.nav-trigger');
-
-        if (button && button.tagName === 'BUTTON') {
-          button.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      activeItem = null;
-      pinnedItem = null;
-    }
-
-    function openMenu(item) {
-      navItems.forEach(menu => {
-        menu.classList.remove('is-open');
-
-        const button = menu.querySelector('.nav-trigger');
-
-        if (button && button.tagName === 'BUTTON') {
-          button.setAttribute('aria-expanded', 'false');
-        }
-      });
-
-      if (activeItem === item && !pinnedItem) {
-        activeItem = null;
-        return;
-      }
-
-      item.classList.add('is-open');
-
-      const button = item.querySelector('.nav-trigger');
-
-      if (button && button.tagName === 'BUTTON') {
-        button.setAttribute('aria-expanded', 'true');
-      }
-
-      activeItem = item;
-    }
-
-    /* Open dropdowns when hovering over their menu titles */
-    navItems.forEach(item => {
-      const button = item.querySelector('button.nav-trigger');
-
-      if (button) {
-        item.addEventListener('mouseenter', () => {
-          if (window.matchMedia('(hover: hover)').matches) {
-            pinnedItem = null;
-            openMenu(item);
-          }
-        });
-
-        button.addEventListener('click', (event) => {
-          event.stopPropagation();
-
-          if (pinnedItem === item) {
-            closeMenus();
-          } else {
-            pinnedItem = item;
-            openMenu(item);
-          }
-        });
-      }
-    });
-
-    /* Close the active dropdown when the pointer moves over another menu title */
-    nav.addEventListener('pointermove', (event) => {
-      if (!activeItem || pinnedItem) {
-        return;
-      }
-
-      const pointerOnAnotherItem = Array.from(navItems).some(item => {
-        if (item === activeItem) {
-          return false;
-        }
-
-        const rect = item.getBoundingClientRect();
-
-        return (
-          event.clientX >= rect.left &&
-          event.clientX <= rect.right &&
-          event.clientY >= rect.top &&
-          event.clientY <= rect.bottom
-        );
-      });
-
-      if (pointerOnAnotherItem) {
-        closeMenus();
-      }
-    });
-
-    /* Close dropdowns when leaving the entire navigation area */
-    nav.addEventListener('mouseleave', () => {
-      if (pinnedItem) {
-        return;
-      }
-
-      closeMenus();
-    });
-
-    /* Close dropdowns when clicking outside the navigation */
-    document.addEventListener('click', (event) => {
-      if (!nav.contains(event.target)) {
-        closeMenus();
-      }
-    });
-  </script>
+  <!-- Common Navigation JS -->
+  <script src="js/nav.js"></script>
 
 </body>
 </html>
