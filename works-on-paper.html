@@ -7,15 +7,15 @@
 
   <title>Works on Paper | Dasole Oh</title>
 
-<!-- Google Analytics 4 -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-3GDJTZR23T"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Google Analytics 4 -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-3GDJTZR23T"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
 
-  gtag('config', 'G-3GDJTZR23T');
-</script>
+    gtag('config', 'G-3GDJTZR23T');
+  </script>
 
   <!-- Wanted Sans -->
   <link
@@ -631,27 +631,21 @@
         </div>
       </div>
 
-      <!-- TEXTS -->
+      <!-- STATEMENT -->
       <div class="nav-item">
-        <button
+        <a
+          href="statement.html"
           class="nav-trigger"
-          type="button"
-          aria-expanded="false"
+          style="padding-bottom: 8px;"
         >
-          Texts
-        </button>
-
-        <div class="dropdown">
-          <a href="statement.html">Artist's Statement</a>
-          <a href="exhibition-review-01.html">Exhibition Review -1 (2023)</a>
-          <a href="#">Exhibition Review -2 (2023)</a>
-        </div>
+          Statement
+        </a>
       </div>
 
       <!-- CV / CONTACT -->
       <div class="nav-item">
         <a
-          href="/cv-contact.html"
+          href="cv-contact.html"
           class="nav-trigger"
           style="padding-bottom: 8px;"
         >
@@ -954,17 +948,18 @@
       activeItem = item;
     }
 
+    /* Open dropdowns when hovering over their menu titles */
     navItems.forEach(item => {
       const button = item.querySelector('button.nav-trigger');
 
-      item.addEventListener('mouseenter', () => {
-        if (window.matchMedia('(hover: hover)').matches) {
-          pinnedItem = null;
-          openMenu(item);
-        }
-      });
-
       if (button) {
+        item.addEventListener('mouseenter', () => {
+          if (window.matchMedia('(hover: hover)').matches) {
+            pinnedItem = null;
+            openMenu(item);
+          }
+        });
+
         button.addEventListener('click', (event) => {
           event.stopPropagation();
 
@@ -978,6 +973,33 @@
       }
     });
 
+    /* Close the active dropdown when the pointer moves over another menu title */
+    nav.addEventListener('pointermove', (event) => {
+      if (!activeItem || pinnedItem) {
+        return;
+      }
+
+      const pointerOnAnotherItem = Array.from(navItems).some(item => {
+        if (item === activeItem) {
+          return false;
+        }
+
+        const rect = item.getBoundingClientRect();
+
+        return (
+          event.clientX >= rect.left &&
+          event.clientX <= rect.right &&
+          event.clientY >= rect.top &&
+          event.clientY <= rect.bottom
+        );
+      });
+
+      if (pointerOnAnotherItem) {
+        closeMenus();
+      }
+    });
+
+    /* Close dropdowns when leaving the entire navigation area */
     nav.addEventListener('mouseleave', () => {
       if (pinnedItem) {
         return;
@@ -986,6 +1008,7 @@
       closeMenus();
     });
 
+    /* Close dropdowns when clicking outside the navigation */
     document.addEventListener('click', (event) => {
       if (!nav.contains(event.target)) {
         closeMenus();
